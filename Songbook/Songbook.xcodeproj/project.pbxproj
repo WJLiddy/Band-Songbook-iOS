@@ -14,6 +14,10 @@
 		24FDFCE71E5F60BF006CDE78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24FDFCE51E5F60BF006CDE78 /* LaunchScreen.storyboard */; };
 		24FDFCF21E5F60BF006CDE78 /* SongbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFCF11E5F60BF006CDE78 /* SongbookTests.swift */; };
 		24FDFCFD1E5F60C0006CDE78 /* SongbookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFCFC1E5F60C0006CDE78 /* SongbookUITests.swift */; };
+		24FDFD0E1E5F6C75006CDE78 /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFD0B1E5F6C75006CDE78 /* ysocket.swift */; };
+		24FDFD0F1E5F6C75006CDE78 /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFD0C1E5F6C75006CDE78 /* ytcpsocket.c */; };
+		24FDFD101E5F6C75006CDE78 /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFD0D1E5F6C75006CDE78 /* ytcpsocket.swift */; };
+		24FDFD121E5F6D20006CDE78 /* SongSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFD111E5F6D20006CDE78 /* SongSocket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,11 @@
 		24FDFCF81E5F60C0006CDE78 /* SongbookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SongbookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24FDFCFC1E5F60C0006CDE78 /* SongbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongbookUITests.swift; sourceTree = "<group>"; };
 		24FDFCFE1E5F60C0006CDE78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24FDFD0A1E5F6C73006CDE78 /* Songbook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Songbook-Bridging-Header.h"; sourceTree = "<group>"; };
+		24FDFD0B1E5F6C75006CDE78 /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = SOURCE_ROOT; };
+		24FDFD0C1E5F6C75006CDE78 /* ytcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ytcpsocket.c; sourceTree = SOURCE_ROOT; };
+		24FDFD0D1E5F6C75006CDE78 /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = SOURCE_ROOT; };
+		24FDFD111E5F6D20006CDE78 /* SongSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSocket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +106,17 @@
 		24FDFCDB1E5F60BF006CDE78 /* Songbook */ = {
 			isa = PBXGroup;
 			children = (
+				24FDFD0B1E5F6C75006CDE78 /* ysocket.swift */,
+				24FDFD0C1E5F6C75006CDE78 /* ytcpsocket.c */,
+				24FDFD0D1E5F6C75006CDE78 /* ytcpsocket.swift */,
 				24FDFCDC1E5F60BF006CDE78 /* AppDelegate.swift */,
 				24FDFCDE1E5F60BF006CDE78 /* ViewController.swift */,
 				24FDFCE01E5F60BF006CDE78 /* Main.storyboard */,
 				24FDFCE31E5F60BF006CDE78 /* Assets.xcassets */,
 				24FDFCE51E5F60BF006CDE78 /* LaunchScreen.storyboard */,
 				24FDFCE81E5F60BF006CDE78 /* Info.plist */,
+				24FDFD0A1E5F6C73006CDE78 /* Songbook-Bridging-Header.h */,
+				24FDFD111E5F6D20006CDE78 /* SongSocket.swift */,
 			);
 			path = Songbook;
 			sourceTree = "<group>";
@@ -193,6 +207,7 @@
 				TargetAttributes = {
 					24FDFCD81E5F60BF006CDE78 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					24FDFCEC1E5F60BF006CDE78 = {
@@ -259,8 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24FDFD0E1E5F6C75006CDE78 /* ysocket.swift in Sources */,
 				24FDFCDF1E5F60BF006CDE78 /* ViewController.swift in Sources */,
+				24FDFD0F1E5F6C75006CDE78 /* ytcpsocket.c in Sources */,
 				24FDFCDD1E5F60BF006CDE78 /* AppDelegate.swift in Sources */,
+				24FDFD101E5F6C75006CDE78 /* ytcpsocket.swift in Sources */,
+				24FDFD121E5F6D20006CDE78 /* SongSocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,10 +429,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Songbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NeutralSpace.Songbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Songbook/Songbook-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -422,10 +444,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Songbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NeutralSpace.Songbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Songbook/Songbook-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
