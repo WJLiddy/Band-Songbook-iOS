@@ -96,12 +96,12 @@ int ytcpsocket_connect(const char *host,int port,int timeout){
 int ytcpsocket_close(int socketfd){
     return close(socketfd);
 }
-int ytcpsocket_pull(int socketfd,char *data,int len,int timeout_sec){
-    if (timeout_sec>0) {
+int ytcpsocket_pull(int socketfd,char *data,int len,int timeout_usec){
+    if (timeout_usec>0) {
         fd_set fdset;
         struct timeval timeout;
-        timeout.tv_usec = 0;
-        timeout.tv_sec = timeout_sec;
+        timeout.tv_usec = timeout_usec;
+        timeout.tv_sec = 0;
         FD_ZERO(&fdset);
         FD_SET(socketfd, &fdset);
         int ret = select(socketfd+1, &fdset, NULL, NULL, &timeout);

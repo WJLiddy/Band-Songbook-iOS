@@ -35,17 +35,14 @@ class SongSocket
     public func recvJSON() throws -> [String: Any]?
     {
         let newline = NSCharacterSet(charactersIn: "\n")
-        let data=_client.read(1024*100)
+        //Convert microseconds to 10 msec
+        let data=_client.read(1024*100, timeout: 10000)
         if let d=data{
             if let str=String(bytes: d, encoding: String.Encoding.ascii)
             {
                 _recvBuffer = _recvBuffer + str
                 if(str.rangeOfCharacter(from: newline as CharacterSet) != nil)
                 {
-                    //let idx = str.characters.index(of: "\n")
-                    // let pos = str.characters.distance(from: str.startIndex, to: idx!) as Int
-                    print("Response Finish! RECVBuffer is")
-                    print(_recvBuffer)
                     // split the buffer
                     let lineArray = _recvBuffer.components(separatedBy: "\n")
                     _recvBuffer = lineArray[1];

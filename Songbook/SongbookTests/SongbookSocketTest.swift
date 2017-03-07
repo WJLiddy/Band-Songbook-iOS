@@ -35,9 +35,10 @@ class SongbookSocketTest: XCTestCase
         super.tearDown()
     }
     
-    func testExample() {
+    func testGroupDoesNotExist() {
         
         SongbookSocketTest._ss!.sendRequest(request : JoinRequest(name: "me",group: "the velvet underground"))
+        // Let message arrive
         sleep(1)
         do
         {
@@ -47,6 +48,18 @@ class SongbookSocketTest: XCTestCase
         {
             print("should not have errored")
         }
+    }
+    
+    func testNonBlocking() {
+        // Connect, then just chill
+        do
+        {
+            let _ = try SongbookSocketTest._ss!.recvJSON()
+        } catch
+        {
+            print("should not have errored")
+        }
+        XCTAssert(true)
     }
     
 }
