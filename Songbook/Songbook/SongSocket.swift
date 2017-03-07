@@ -12,7 +12,6 @@ class SongSocket
 {
     
     enum ServerError: Error { case Offline}
-    
     private static var _serverIP: String = ""
     private static var _port: Int = 1337
     
@@ -30,8 +29,8 @@ class SongSocket
         }
     }
     
-    // Reads data from the socket. Sets JSON_READY flag to TRUE if it reads a new packet.
-    // Otherwise, returns false if packet is not ready.
+    // Reads data from the socket. returns a JSON if it reads one.
+    // Otherwise, returns nil if packet is not ready.
     // Throws error if server connection dies.
     public func recvJSON() throws -> [String: Any]?
     {
@@ -57,5 +56,15 @@ class SongSocket
             }
         }
         return nil;
+    }
+    
+    public func sendRequest(request : Request)
+    {
+        let _ = _client.send(str: request.toJSONString())
+    }
+    
+    public func close()
+    {
+        let _ =  _client.close()
     }
 }
