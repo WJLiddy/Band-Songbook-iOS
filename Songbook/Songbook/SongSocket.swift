@@ -12,8 +12,8 @@ class SongSocket
 {
     
     enum ServerError: Error { case Offline}
-    private static var _serverIP: String = ""
-    private static var _port: Int = 1337
+    private static var _serverIP: String = "34.197.242.214"
+    private static var _port: Int = 54106
     
     private var _client: TCPClient
     private var _recvBuffer : String
@@ -44,10 +44,10 @@ class SongSocket
                 {
                     //let idx = str.characters.index(of: "\n")
                     // let pos = str.characters.distance(from: str.startIndex, to: idx!) as Int
-                    print("Response Finish!")
-                    
+                    print("Response Finish! RECVBuffer is")
+                    print(_recvBuffer)
                     // split the buffer
-                    let lineArray = _recvBuffer.characters.split(separator: "\n").map(String.init)
+                    let lineArray = _recvBuffer.components(separatedBy: "\n")
                     _recvBuffer = lineArray[1];
                     //Convert String to utf8datastream
                     let jsondata = lineArray[0].data(using: .utf8)!
@@ -58,9 +58,9 @@ class SongSocket
         return nil;
     }
     
-    public func sendRequest(request : Request)
+    public func sendRequest(request : Request) 
     {
-        let _ = _client.send(str: request.toJSONString())
+        let _ = _client.send(str: request.toJSONString() + "\n")
     }
     
     public func close()

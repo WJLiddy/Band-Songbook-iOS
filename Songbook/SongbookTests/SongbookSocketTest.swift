@@ -24,21 +24,29 @@ class SongbookSocketTest: XCTestCase
         }
         catch
         {
-            print("Failure!")
+            print("Connection Failure!")
             XCTFail("Should not have failed")
         }
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        SongbookSocketTest._ss!.close()
         super.tearDown()
     }
     
     func testExample() {
         
         SongbookSocketTest._ss!.sendRequest(request : JoinRequest(name: "me",group: "the velvet underground"))
-            
-        XCTAssert(false, "not impld")
+        sleep(1)
+        do
+        {
+            let recv_ = try SongbookSocketTest._ss!.recvJSON()
+            XCTAssert(recv_!["response"] as! String == "error","Should have got error-group does not exist")
+        } catch
+        {
+            print("should not have errored")
+        }
     }
     
 }
