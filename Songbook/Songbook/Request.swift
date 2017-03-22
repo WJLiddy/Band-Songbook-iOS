@@ -58,4 +58,46 @@ class StartRequest : Request
     }
 }
 
+// dummy method for now. Will hit it later if I got time
+class StartSessionRequest : Request
+{
+    
+    public init(songList: [String])
+    {
+        //_name = name;
+        //_group = group;
+        //_join = join;
+    }
+    
+    public override func toJSONString() -> String
+    {
+        /**
+        let jsonObject:NSMutableDictionary = NSMutableDictionary()
+        jsonObject.setValue(_name, forKey: "user name")
+        jsonObject.setValue(_group, forKey: "group name")
+        if(_join)
+        {
+            jsonObject.setValue("join group", forKey: "request")
+        } else
+        {
+            jsonObject.setValue("create group", forKey: "request")
+        }
+        let jsonData: NSData
+        
+        do {
+            jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions()) as NSData
+            let jsonString = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
+            print("json string = \(jsonString)")
+            return jsonString
+        } catch _ {
+            print ("JSON Failure")
+        }
+        // Parsing will never fail
+ */
+        return ""
+    }
+}
+
+
+
 

@@ -13,6 +13,9 @@ import UIKit
 /// File browser containing navigation controller.
 open class FileBrowser: UINavigationController {
     
+    
+    static var songsToPlay : Set = [""]    //MARK: UITableViewDataSource, UITableViewDelegate
+    
     let parser = FileParser.sharedInstance
     
     var fileList: FileListViewController?

@@ -11,9 +11,7 @@ import Foundation
 import UIKit
 
 extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    //MARK: UITableViewDataSource, UITableViewDelegate
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         if searchController.isActive {
             return 1
@@ -41,6 +39,7 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    //TODO: Remember where checkmarks go on files
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFile = fileForIndexPath(indexPath)
         searchController.isActive = false
@@ -50,16 +49,22 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.pushViewController(fileListViewController, animated: true)
         }
         else {
-            if let didSelectFile = didSelectFile {
-                self.dismiss()
-                didSelectFile(selectedFile)
-            }
-            else {
-                let filePreview = previewManager.previewViewControllerForFile(selectedFile, fromNavigation: true)
-                self.navigationController?.pushViewController(filePreview, animated: true)
-            }
+
+                if(!FileBrowser.songsToPlay.contains(selectedFile.displayName))
+                {
+                    print("added" + selectedFile.displayName)
+                    FileBrowser.songsToPlay.insert(selectedFile.displayName)
+                    tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+
+                } else
+                {
+                    print("removed" + selectedFile.displayName)
+                    FileBrowser.songsToPlay.remove(selectedFile.displayName)
+                    tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
+                }
+                tableView.deselectRow(at: indexPath, animated: true)
+            
         }
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
