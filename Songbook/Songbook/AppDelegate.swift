@@ -16,6 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let demoSongs: [String] = ["Green Day - When I Come Around v4","Blink 182 - All The Small Things","Traditional - Silent Night"]
+        // copy sample song files
+        let fileManger = FileManager.default
+        let doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
+        for song in demoSongs
+        {
+            let destinationPath = doumentDirectoryPath.appendingPathComponent(song + ".xml")
+            let sourcePath = Bundle.main.path(forResource: song , ofType: "xml")
+            do
+            {
+                try fileManger.copyItem(atPath: sourcePath!, toPath: destinationPath)
+            } catch
+            {
+                print("\n\n\ncould not copy\n\n\n")
+            }
+        }
         return true
     }
 
@@ -40,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
 
 }
 
