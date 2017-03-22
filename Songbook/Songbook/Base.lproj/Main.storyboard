@@ -91,6 +91,24 @@
             </objects>
             <point key="canvasLocation" x="203" y="258"/>
         </scene>
+        <!--Sesson-->
+        <scene sceneID="tDr-wi-LIU">
+            <objects>
+                <viewController title="Sesson" id="1kM-1F-tYa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uB9-nn-aur"/>
+                        <viewControllerLayoutGuide type="bottom" id="FuA-Jr-hRH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="plX-sA-Dhe">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9T8-8D-zw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1113" y="-466"/>
+        </scene>
         <!--Lobby-->
         <scene sceneID="Yec-J9-51h">
             <objects>
@@ -111,7 +129,7 @@
                                         <rect key="frame" x="0.0" y="28" width="627" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a11-zr-4lI" id="d6d-eE-eqc">
-                                            <rect key="frame" x="0.0" y="0.0" width="627" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="627" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlK-R3-rpm">
@@ -176,6 +194,9 @@
                             <constraint firstItem="x3o-d9-hIC" firstAttribute="top" secondItem="dax-dp-VYX" secondAttribute="bottom" id="sQU-Ex-R1t"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="1kM-1F-tYa" kind="showDetail" identifier="ToSession" id="W65-Ar-Hb9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3t-nM-KIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

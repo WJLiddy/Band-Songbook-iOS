@@ -20,7 +20,27 @@ class Lobby : UIViewController
     }
     
     @IBAction func onPressStart(_ sender: Any) {
-
+        print("Sending " + String(FileBrowser.songsToPlay.count) + " songs")
+        // Don't send yet. I just want to show parsing almost work.
+        Session.songXMLs = []
+        for fname in FileBrowser.songsToPlay
+        {
+            if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            {
+                let path = dir.appendingPathComponent(fname)
+                
+                //reading
+                do {
+                    let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
+                    Session.songXMLs.append(SWXMLHash.parse(text2))
+                }
+                catch {/* error handling here */}
+            }
+        }
+        //Done! Proceed to the session.
+            performSegue(withIdentifier: "ToSession", sender: nil)
+        
+        
     }
     
     @IBAction func onPressAddSongs(_ sender: Any) {

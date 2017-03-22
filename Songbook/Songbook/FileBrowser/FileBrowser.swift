@@ -14,7 +14,7 @@ import UIKit
 open class FileBrowser: UINavigationController {
     
     
-    static var songsToPlay : Set = [""]    //MARK: UITableViewDataSource, UITableViewDelegate
+    static var songsToPlay : Set<String> = []    //MARK: UITableViewDataSource, UITableViewDelegate
     
     let parser = FileParser.sharedInstance
     

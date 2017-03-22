@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try fileManger.copyItem(atPath: sourcePath!, toPath: destinationPath)
             } catch
             {
-                print("\n\n\ncould not copy\n\n\n")
+               // will error if file already present
             }
         }
         return true
