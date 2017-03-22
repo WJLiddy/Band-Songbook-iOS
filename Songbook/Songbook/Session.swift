@@ -17,6 +17,7 @@ class Session : UIViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getPartNumberDesired()
+        let _ = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[0])
     }
     
     //curry magic
@@ -30,8 +31,6 @@ class Session : UIViewController
         let songname = Session.songXMLs[0]["score-partwise"]["work"]["work-title"][0].element!.text!
         let alert = UIAlertController(title: "Select primary part for: ", message: songname, preferredStyle: UIAlertControllerStyle.alert)
 
-        print(Session.songXMLs[0]["score-partwise"]["part-list"].all.count)
-        print(Session.songXMLs[0]["score-partwise"]["part-list"]["score-part"].all.count)
         for (index,element) in Session.songXMLs[0]["score-partwise"]["part-list"]["score-part"].all.enumerated()
         {
             

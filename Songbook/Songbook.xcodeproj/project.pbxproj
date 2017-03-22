@@ -34,6 +34,7 @@
 		247DC5C11E82449A0005B489 /* Traditional - Silent Night.xml in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5BE1E82449A0005B489 /* Traditional - Silent Night.xml */; };
 		247DC5C31E8254E40005B489 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5C21E8254E30005B489 /* Session.swift */; };
 		247DC5C51E8256340005B489 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5C41E8256340005B489 /* SWXMLHash.swift */; };
+		24AFDB0A1E826FDA006713D5 /* MusicXMLPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AFDB091E826FDA006713D5 /* MusicXMLPart.swift */; };
 		24F816121E6F38C30095ECA5 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F816111E6F38C30095ECA5 /* Request.swift */; };
 		24F816131E6F3E110095ECA5 /* SongSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFD111E5F6D20006CDE78 /* SongSocket.swift */; };
 		24F816141E6F3E220095ECA5 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F816111E6F38C30095ECA5 /* Request.swift */; };
@@ -99,6 +100,7 @@
 		247DC5BE1E82449A0005B489 /* Traditional - Silent Night.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Traditional - Silent Night.xml"; path = "SampleSongs/Traditional - Silent Night.xml"; sourceTree = "<group>"; };
 		247DC5C21E8254E30005B489 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		247DC5C41E8256340005B489 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
+		24AFDB091E826FDA006713D5 /* MusicXMLPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicXMLPart.swift; sourceTree = "<group>"; };
 		24F816111E6F38C30095ECA5 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		24FA50411E81D6210099534C /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		24FA50431E81EAFC0099534C /* UIErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIErrorMessage.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				24FA50411E81D6210099534C /* MainMenu.swift */,
 				247DC5891E8215730005B489 /* Lobby.swift */,
 				247DC5C21E8254E30005B489 /* Session.swift */,
+				24AFDB091E826FDA006713D5 /* MusicXMLPart.swift */,
 			);
 			path = Songbook;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				247DC5C51E8256340005B489 /* SWXMLHash.swift in Sources */,
 				24F816121E6F38C30095ECA5 /* Request.swift in Sources */,
 				24F816161E6F41E80095ECA5 /* SongSocket.swift in Sources */,
+				24AFDB0A1E826FDA006713D5 /* MusicXMLPart.swift in Sources */,
 				24FDFD101E5F6C75006CDE78 /* ytcpsocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
