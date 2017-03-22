@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		247DC58A1E8215730005B489 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5891E8215730005B489 /* Lobby.swift */; };
+		247DC59B1E821D590005B489 /* FBFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5901E821D590005B489 /* FBFile.swift */; };
+		247DC59C1E821D590005B489 /* FileBrowser.h in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5911E821D590005B489 /* FileBrowser.h */; };
+		247DC59D1E821D590005B489 /* FileBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5921E821D590005B489 /* FileBrowser.swift */; };
+		247DC59E1E821D590005B489 /* FileListPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5931E821D590005B489 /* FileListPreview.swift */; };
+		247DC59F1E821D590005B489 /* FileListSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5941E821D590005B489 /* FileListSearch.swift */; };
+		247DC5A01E821D590005B489 /* FileListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5951E821D590005B489 /* FileListTableView.swift */; };
+		247DC5A11E821D590005B489 /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5961E821D590005B489 /* FileListViewController.swift */; };
+		247DC5A21E821D590005B489 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5971E821D590005B489 /* FileParser.swift */; };
+		247DC5A31E821D590005B489 /* PreviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5981E821D590005B489 /* PreviewManager.swift */; };
+		247DC5A41E821D590005B489 /* PreviewTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5991E821D590005B489 /* PreviewTransitionViewController.swift */; };
+		247DC5A51E821D590005B489 /* WebviewPreviewViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC59A1E821D590005B489 /* WebviewPreviewViewContoller.swift */; };
+		247DC5B11E8221C70005B489 /* .DS_Store in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5A71E8221C70005B489 /* .DS_Store */; };
+		247DC5B21E8221C70005B489 /* documents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5A81E8221C70005B489 /* documents@2x.png */; };
+		247DC5B31E8221C70005B489 /* file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5A91E8221C70005B489 /* file@2x.png */; };
+		247DC5B41E8221C70005B489 /* FileBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5AA1E8221C70005B489 /* FileBrowser.xib */; };
+		247DC5B51E8221C70005B489 /* folder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5AB1E8221C70005B489 /* folder@2x.png */; };
+		247DC5B61E8221C70005B489 /* image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5AC1E8221C70005B489 /* image@2x.png */; };
+		247DC5B71E8221C70005B489 /* pdf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5AD1E8221C70005B489 /* pdf@2x.png */; };
+		247DC5B81E8221C70005B489 /* PreviewTransitionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5AE1E8221C70005B489 /* PreviewTransitionViewController.xib */; };
+		247DC5B91E8221C70005B489 /* WebviewPreviewViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5AF1E8221C70005B489 /* WebviewPreviewViewContoller.xib */; };
+		247DC5BA1E8221C70005B489 /* zip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 247DC5B01E8221C70005B489 /* zip@2x.png */; };
 		24F816121E6F38C30095ECA5 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F816111E6F38C30095ECA5 /* Request.swift */; };
 		24F816131E6F3E110095ECA5 /* SongSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFD111E5F6D20006CDE78 /* SongSocket.swift */; };
 		24F816141E6F3E220095ECA5 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F816111E6F38C30095ECA5 /* Request.swift */; };
@@ -14,6 +36,7 @@
 		24F816171E6F42670095ECA5 /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFD0D1E5F6C75006CDE78 /* ytcpsocket.swift */; };
 		24F816181E6F426A0095ECA5 /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFD0B1E5F6C75006CDE78 /* ysocket.swift */; };
 		24FA50421E81D6210099534C /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA50411E81D6210099534C /* MainMenu.swift */; };
+		24FA50441E81EAFC0099534C /* UIErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA50431E81EAFC0099534C /* UIErrorMessage.swift */; };
 		24FDFCDD1E5F60BF006CDE78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFCDC1E5F60BF006CDE78 /* AppDelegate.swift */; };
 		24FDFCDF1E5F60BF006CDE78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFCDE1E5F60BF006CDE78 /* ViewController.swift */; };
 		24FDFCE21E5F60BF006CDE78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24FDFCE01E5F60BF006CDE78 /* Main.storyboard */; };
@@ -44,8 +67,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		247DC5891E8215730005B489 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
+		247DC5901E821D590005B489 /* FBFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FBFile.swift; path = FileBrowser/FBFile.swift; sourceTree = "<group>"; };
+		247DC5911E821D590005B489 /* FileBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileBrowser.h; path = FileBrowser/FileBrowser.h; sourceTree = "<group>"; };
+		247DC5921E821D590005B489 /* FileBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileBrowser.swift; path = FileBrowser/FileBrowser.swift; sourceTree = "<group>"; };
+		247DC5931E821D590005B489 /* FileListPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileListPreview.swift; path = FileBrowser/FileListPreview.swift; sourceTree = "<group>"; };
+		247DC5941E821D590005B489 /* FileListSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileListSearch.swift; path = FileBrowser/FileListSearch.swift; sourceTree = "<group>"; };
+		247DC5951E821D590005B489 /* FileListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileListTableView.swift; path = FileBrowser/FileListTableView.swift; sourceTree = "<group>"; };
+		247DC5961E821D590005B489 /* FileListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileListViewController.swift; path = FileBrowser/FileListViewController.swift; sourceTree = "<group>"; };
+		247DC5971E821D590005B489 /* FileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileParser.swift; path = FileBrowser/FileParser.swift; sourceTree = "<group>"; };
+		247DC5981E821D590005B489 /* PreviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreviewManager.swift; path = FileBrowser/PreviewManager.swift; sourceTree = "<group>"; };
+		247DC5991E821D590005B489 /* PreviewTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreviewTransitionViewController.swift; path = FileBrowser/PreviewTransitionViewController.swift; sourceTree = "<group>"; };
+		247DC59A1E821D590005B489 /* WebviewPreviewViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebviewPreviewViewContoller.swift; path = FileBrowser/WebviewPreviewViewContoller.swift; sourceTree = "<group>"; };
+		247DC5A71E8221C70005B489 /* .DS_Store */ = {isa = PBXFileReference; lastKnownFileType = file; name = .DS_Store; path = FileBrowser/Resources/.DS_Store; sourceTree = "<group>"; };
+		247DC5A81E8221C70005B489 /* documents@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "documents@2x.png"; path = "FileBrowser/Resources/documents@2x.png"; sourceTree = "<group>"; };
+		247DC5A91E8221C70005B489 /* file@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "file@2x.png"; path = "FileBrowser/Resources/file@2x.png"; sourceTree = "<group>"; };
+		247DC5AA1E8221C70005B489 /* FileBrowser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileBrowser.xib; path = FileBrowser/Resources/FileBrowser.xib; sourceTree = "<group>"; };
+		247DC5AB1E8221C70005B489 /* folder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "folder@2x.png"; path = "FileBrowser/Resources/folder@2x.png"; sourceTree = "<group>"; };
+		247DC5AC1E8221C70005B489 /* image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image@2x.png"; path = "FileBrowser/Resources/image@2x.png"; sourceTree = "<group>"; };
+		247DC5AD1E8221C70005B489 /* pdf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pdf@2x.png"; path = "FileBrowser/Resources/pdf@2x.png"; sourceTree = "<group>"; };
+		247DC5AE1E8221C70005B489 /* PreviewTransitionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreviewTransitionViewController.xib; path = FileBrowser/Resources/PreviewTransitionViewController.xib; sourceTree = "<group>"; };
+		247DC5AF1E8221C70005B489 /* WebviewPreviewViewContoller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebviewPreviewViewContoller.xib; path = FileBrowser/Resources/WebviewPreviewViewContoller.xib; sourceTree = "<group>"; };
+		247DC5B01E8221C70005B489 /* zip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zip@2x.png"; path = "FileBrowser/Resources/zip@2x.png"; sourceTree = "<group>"; };
 		24F816111E6F38C30095ECA5 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		24FA50411E81D6210099534C /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		24FA50431E81EAFC0099534C /* UIErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIErrorMessage.swift; sourceTree = "<group>"; };
 		24FDFCD91E5F60BF006CDE78 /* Songbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Songbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24FDFCDC1E5F60BF006CDE78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24FDFCDE1E5F60BF006CDE78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +137,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		247DC58E1E821CED0005B489 /* FileBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				247DC5901E821D590005B489 /* FBFile.swift */,
+				247DC5911E821D590005B489 /* FileBrowser.h */,
+				247DC5921E821D590005B489 /* FileBrowser.swift */,
+				247DC5931E821D590005B489 /* FileListPreview.swift */,
+				247DC5941E821D590005B489 /* FileListSearch.swift */,
+				247DC5951E821D590005B489 /* FileListTableView.swift */,
+				247DC5961E821D590005B489 /* FileListViewController.swift */,
+				247DC5971E821D590005B489 /* FileParser.swift */,
+				247DC5981E821D590005B489 /* PreviewManager.swift */,
+				247DC5991E821D590005B489 /* PreviewTransitionViewController.swift */,
+				247DC59A1E821D590005B489 /* WebviewPreviewViewContoller.swift */,
+			);
+			name = FileBrowser;
+			sourceTree = "<group>";
+		};
+		247DC5A61E8221A50005B489 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				247DC5A71E8221C70005B489 /* .DS_Store */,
+				247DC5A81E8221C70005B489 /* documents@2x.png */,
+				247DC5A91E8221C70005B489 /* file@2x.png */,
+				247DC5AA1E8221C70005B489 /* FileBrowser.xib */,
+				247DC5AB1E8221C70005B489 /* folder@2x.png */,
+				247DC5AC1E8221C70005B489 /* image@2x.png */,
+				247DC5AD1E8221C70005B489 /* pdf@2x.png */,
+				247DC5AE1E8221C70005B489 /* PreviewTransitionViewController.xib */,
+				247DC5AF1E8221C70005B489 /* WebviewPreviewViewContoller.xib */,
+				247DC5B01E8221C70005B489 /* zip@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		24FDFCD01E5F60BF006CDE78 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				24FDFD0B1E5F6C75006CDE78 /* ysocket.swift */,
+				247DC5A61E8221A50005B489 /* Resources */,
+				247DC58E1E821CED0005B489 /* FileBrowser */,
 				24FDFD0C1E5F6C75006CDE78 /* ytcpsocket.c */,
 				24FDFD0D1E5F6C75006CDE78 /* ytcpsocket.swift */,
 				24FDFCDC1E5F60BF006CDE78 /* AppDelegate.swift */,
@@ -124,9 +207,11 @@
 				24FDFCE51E5F60BF006CDE78 /* LaunchScreen.storyboard */,
 				24FDFCE81E5F60BF006CDE78 /* Info.plist */,
 				24FDFD0A1E5F6C73006CDE78 /* Songbook-Bridging-Header.h */,
+				24FA50431E81EAFC0099534C /* UIErrorMessage.swift */,
 				24FDFD111E5F6D20006CDE78 /* SongSocket.swift */,
 				24F816111E6F38C30095ECA5 /* Request.swift */,
 				24FA50411E81D6210099534C /* MainMenu.swift */,
+				247DC5891E8215730005B489 /* Lobby.swift */,
 			);
 			path = Songbook;
 			sourceTree = "<group>";
@@ -257,8 +342,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247DC5B91E8221C70005B489 /* WebviewPreviewViewContoller.xib in Resources */,
+				247DC5B61E8221C70005B489 /* image@2x.png in Resources */,
+				247DC5B71E8221C70005B489 /* pdf@2x.png in Resources */,
 				24FDFCE71E5F60BF006CDE78 /* LaunchScreen.storyboard in Resources */,
 				24FDFCE41E5F60BF006CDE78 /* Assets.xcassets in Resources */,
+				247DC5B21E8221C70005B489 /* documents@2x.png in Resources */,
+				247DC5BA1E8221C70005B489 /* zip@2x.png in Resources */,
+				247DC5B11E8221C70005B489 /* .DS_Store in Resources */,
+				247DC5B81E8221C70005B489 /* PreviewTransitionViewController.xib in Resources */,
+				247DC5B41E8221C70005B489 /* FileBrowser.xib in Resources */,
+				247DC5B31E8221C70005B489 /* file@2x.png in Resources */,
+				247DC5B51E8221C70005B489 /* folder@2x.png in Resources */,
 				24FDFCE21E5F60BF006CDE78 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,11 +379,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247DC59B1E821D590005B489 /* FBFile.swift in Sources */,
+				247DC59C1E821D590005B489 /* FileBrowser.h in Sources */,
+				247DC59D1E821D590005B489 /* FileBrowser.swift in Sources */,
+				247DC59E1E821D590005B489 /* FileListPreview.swift in Sources */,
+				247DC59F1E821D590005B489 /* FileListSearch.swift in Sources */,
+				247DC5A01E821D590005B489 /* FileListTableView.swift in Sources */,
+				247DC5A11E821D590005B489 /* FileListViewController.swift in Sources */,
+				247DC5A21E821D590005B489 /* FileParser.swift in Sources */,
+				247DC5A31E821D590005B489 /* PreviewManager.swift in Sources */,
+				247DC5A41E821D590005B489 /* PreviewTransitionViewController.swift in Sources */,
+				247DC5A51E821D590005B489 /* WebviewPreviewViewContoller.swift in Sources */,
 				24FDFD0E1E5F6C75006CDE78 /* ysocket.swift in Sources */,
 				24FDFCDF1E5F60BF006CDE78 /* ViewController.swift in Sources */,
 				24FDFD0F1E5F6C75006CDE78 /* ytcpsocket.c in Sources */,
+				24FA50441E81EAFC0099534C /* UIErrorMessage.swift in Sources */,
 				24FA50421E81D6210099534C /* MainMenu.swift in Sources */,
 				24FDFCDD1E5F60BF006CDE78 /* AppDelegate.swift in Sources */,
+				247DC58A1E8215730005B489 /* Lobby.swift in Sources */,
 				24F816121E6F38C30095ECA5 /* Request.swift in Sources */,
 				24F816161E6F41E80095ECA5 /* SongSocket.swift in Sources */,
 				24FDFD101E5F6C75006CDE78 /* ytcpsocket.swift in Sources */,

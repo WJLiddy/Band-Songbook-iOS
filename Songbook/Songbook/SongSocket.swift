@@ -18,6 +18,9 @@ class SongSocket
     private var _client: TCPClient
     private var _recvBuffer : String
     
+    //We will only have one song socket-- this will be referenced everywhere
+    public static var socket: SongSocket?;
+    
     public init() throws
     {
         _recvBuffer = "";
