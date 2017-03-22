@@ -82,6 +82,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="GroupNameField" destination="UNR-F9-V98" id="0oj-2q-0aE"/>
+                        <outlet property="NameField" destination="5bB-2Z-nm0" id="aO8-VO-Vk4"/>
                         <segue destination="wZA-Xa-iki" kind="showDetail" identifier="ToLobby" id="ymV-Dv-kIW"/>
                     </connections>
                 </viewController>
@@ -102,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Piv-jy-phg">
-                                <rect key="frame" x="20" y="40.5" width="627" height="334.5"/>
+                                <rect key="frame" x="20" y="41" width="627" height="334"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="a11-zr-4lI">
@@ -130,7 +132,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GROUP MEMBERS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2s-vF-aAf">
-                                <rect key="frame" x="20" y="20" width="143.5" height="20.5"/>
+                                <rect key="frame" x="20" y="20" width="144" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -140,12 +142,15 @@
                                 <state key="normal" title="Quit"/>
                                 <connections>
                                     <action selector="onPressQuit:" destination="wZA-Xa-iki" eventType="touchUpInside" id="3c7-Bd-WNm"/>
-                                    <segue destination="BYZ-38-t0r" kind="showDetail" id="C04-dG-Emg"/>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="ToMain" id="C04-dG-Emg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZQ-Xi-6m3">
                                 <rect key="frame" x="592" y="193" width="75" height="30"/>
                                 <state key="normal" title="Add Songs"/>
+                                <connections>
+                                    <action selector="onPressAddSongs:" destination="wZA-Xa-iki" eventType="touchUpInside" id="QA4-VZ-34r"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9d-Hb-rve">
                                 <rect key="frame" x="621" y="345" width="46" height="30"/>

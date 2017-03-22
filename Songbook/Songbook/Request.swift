@@ -18,15 +18,17 @@ class Request
     }
 }
 
-class JoinRequest : Request
+class StartRequest : Request
 {
     private var _name: String
     private var _group: String
+    private var _join: Bool
     
-    public init(name: String, group: String)
+    public init(name: String, group: String, join: Bool)
     {
         _name = name;
         _group = group;
+        _join = join;
     }
     
     public override func toJSONString() -> String
@@ -34,6 +36,13 @@ class JoinRequest : Request
         let jsonObject:NSMutableDictionary = NSMutableDictionary()
         jsonObject.setValue(_name, forKey: "user name")
         jsonObject.setValue(_group, forKey: "group name")
+        if(_join)
+        {
+            jsonObject.setValue("join group", forKey: "request")
+        } else
+        {
+            jsonObject.setValue("create group", forKey: "request")
+        }
         let jsonData: NSData
         
         do {

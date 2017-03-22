@@ -36,7 +36,7 @@ class SongbookSocketTest: XCTestCase
     
     func testGroupDoesNotExist() {
         
-        SongbookSocketTest._ss!.sendRequest(request : JoinRequest(name: "me",group: "the velvet underground"))
+        SongbookSocketTest._ss!.sendRequest(request : StartRequest(name: "me",group: "the velvet underground", join: true))
         // Let message arrive
         sleep(1)
         do

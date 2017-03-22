@@ -14,15 +14,18 @@ class MainMenu : UIViewController
 
     }
 
+    @IBOutlet weak var GroupNameField: UITextField!
+    @IBOutlet weak var NameField: UITextField!
+    
     @IBAction func joinGroupPressed(_ sender: AnyObject) {
         print("join")
-        if(setSocket() && joinRequestOK())
+        if(setSocket() && requestOK(join: true))
         {
             performSegue(withIdentifier: "ToLobby", sender: nil)
         }
     }
     @IBAction func createGroupPressed(_ sender: AnyObject) {
-        if(setSocket() && createRequestOK())
+        if(setSocket() && requestOK(join: false))
         {
             performSegue(withIdentifier: "ToLobby", sender: nil)
         }
@@ -44,9 +47,30 @@ class MainMenu : UIViewController
     }
 
         // return true if connection was init'd, throws error and displays err message if not.
-        public func joinRequestOK() -> Bool
+    public func requestOK(join: Bool) -> Bool
         {
-            return true;
+            // Networking on main???? Just for now....
+            SongSocket.socket!.sendRequest(request : StartRequest(name: NameField.text!,group: GroupNameField.text!, join: join))
+            // Let message arrive
+            sleep(1)
+            var recv: [String: Any]?
+            do
+            {
+                recv = try SongSocket.socket!.recvJSON()
+            } catch
+            {
+                UIErrorMessage.init(viewController: self, errorMessage: "There is an issue with the server. (CLIENT RECVD INVALID JSON)").show()
+                return false;
+            }
+            
+            if (recv!["response"] as! String != "ok")
+            {
+                UIErrorMessage.init(viewController: self, errorMessage: recv!["error message"] as! String).show()
+                return false;
+            }
+            return true
+
+
         }
         
         // return true if connection was init'd, throws error and displays err message if not.

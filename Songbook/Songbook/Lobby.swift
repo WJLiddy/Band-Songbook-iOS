@@ -20,8 +20,11 @@ class Lobby : UIViewController
     }
     
     @IBAction func onPressStart(_ sender: Any) {
+
+    }
+    
+    @IBAction func onPressAddSongs(_ sender: Any) {
         let fileBrowser = FileBrowser()
         present(fileBrowser, animated: true, completion: nil)
     }
-    
 }

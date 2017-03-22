@@ -172,6 +172,18 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		247DC5BB1E8223C80005B489 /* SongSocket */ = {
+			isa = PBXGroup;
+			children = (
+				24FDFD0B1E5F6C75006CDE78 /* ysocket.swift */,
+				24FDFD0C1E5F6C75006CDE78 /* ytcpsocket.c */,
+				24FDFD0D1E5F6C75006CDE78 /* ytcpsocket.swift */,
+				24FDFD111E5F6D20006CDE78 /* SongSocket.swift */,
+				24F816111E6F38C30095ECA5 /* Request.swift */,
+			);
+			name = SongSocket;
+			sourceTree = "<group>";
+		};
 		24FDFCD01E5F60BF006CDE78 = {
 			isa = PBXGroup;
 			children = (
@@ -195,11 +207,9 @@
 		24FDFCDB1E5F60BF006CDE78 /* Songbook */ = {
 			isa = PBXGroup;
 			children = (
-				24FDFD0B1E5F6C75006CDE78 /* ysocket.swift */,
+				247DC5BB1E8223C80005B489 /* SongSocket */,
 				247DC5A61E8221A50005B489 /* Resources */,
 				247DC58E1E821CED0005B489 /* FileBrowser */,
-				24FDFD0C1E5F6C75006CDE78 /* ytcpsocket.c */,
-				24FDFD0D1E5F6C75006CDE78 /* ytcpsocket.swift */,
 				24FDFCDC1E5F60BF006CDE78 /* AppDelegate.swift */,
 				24FDFCDE1E5F60BF006CDE78 /* ViewController.swift */,
 				24FDFCE01E5F60BF006CDE78 /* Main.storyboard */,
@@ -208,8 +218,6 @@
 				24FDFCE81E5F60BF006CDE78 /* Info.plist */,
 				24FDFD0A1E5F6C73006CDE78 /* Songbook-Bridging-Header.h */,
 				24FA50431E81EAFC0099534C /* UIErrorMessage.swift */,
-				24FDFD111E5F6D20006CDE78 /* SongSocket.swift */,
-				24F816111E6F38C30095ECA5 /* Request.swift */,
 				24FA50411E81D6210099534C /* MainMenu.swift */,
 				247DC5891E8215730005B489 /* Lobby.swift */,
 			);
