@@ -23,6 +23,7 @@ class Lobby : UIViewController
         print("Sending " + String(FileBrowser.songsToPlay.count) + " songs")
         // Don't send yet. I just want to show parsing almost work.
         Session.songXMLs = []
+        print("parsing...")
         for fname in FileBrowser.songsToPlay
         {
             if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -37,6 +38,7 @@ class Lobby : UIViewController
                 catch {/* error handling here */}
             }
         }
+        print("proceeding to session")
         //Done! Proceed to the session.
             performSegue(withIdentifier: "ToSession", sender: nil)
         

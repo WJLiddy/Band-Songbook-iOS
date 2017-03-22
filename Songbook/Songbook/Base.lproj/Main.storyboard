@@ -94,7 +94,7 @@
         <!--Sesson-->
         <scene sceneID="tDr-wi-LIU">
             <objects>
-                <viewController title="Sesson" id="1kM-1F-tYa" sceneMemberID="viewController">
+                <viewController title="Sesson" id="1kM-1F-tYa" customClass="Session" customModule="Songbook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uB9-nn-aur"/>
                         <viewControllerLayoutGuide type="bottom" id="FuA-Jr-hRH"/>
