@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2439BEFD1E84BADD00FFB108 /* SessionMusicDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */; };
 		247DC58A1E8215730005B489 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5891E8215730005B489 /* Lobby.swift */; };
 		247DC59B1E821D590005B489 /* FBFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5901E821D590005B489 /* FBFile.swift */; };
 		247DC59C1E821D590005B489 /* FileBrowser.h in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5911E821D590005B489 /* FileBrowser.h */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionMusicDisplay.swift; sourceTree = "<group>"; };
 		247DC5891E8215730005B489 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		247DC5901E821D590005B489 /* FBFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FBFile.swift; path = FileBrowser/FBFile.swift; sourceTree = "<group>"; };
 		247DC5911E821D590005B489 /* FileBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileBrowser.h; path = FileBrowser/FileBrowser.h; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				24FA50411E81D6210099534C /* MainMenu.swift */,
 				247DC5891E8215730005B489 /* Lobby.swift */,
 				247DC5C21E8254E30005B489 /* Session.swift */,
+				2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */,
 				24AFDB091E826FDA006713D5 /* MusicXMLPart.swift */,
 			);
 			path = Songbook;
@@ -414,6 +417,7 @@
 				247DC59E1E821D590005B489 /* FileListPreview.swift in Sources */,
 				247DC59F1E821D590005B489 /* FileListSearch.swift in Sources */,
 				247DC5A01E821D590005B489 /* FileListTableView.swift in Sources */,
+				2439BEFD1E84BADD00FFB108 /* SessionMusicDisplay.swift in Sources */,
 				247DC5A11E821D590005B489 /* FileListViewController.swift in Sources */,
 				247DC5A21E821D590005B489 /* FileParser.swift in Sources */,
 				247DC5A31E821D590005B489 /* PreviewManager.swift in Sources */,

@@ -13,9 +13,12 @@ class Session : UIViewController
 {
     //TODO dump songs into a more friendly data struct based on musicXML specs.
     static var songXMLs : [XMLIndexer] = []
+    static var songParts : [MusicXMLPart]?
+    static var songPartIndexesToDisplay : [Int] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[0])
         getPartNumberDesired()
         let _ = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[0])
     }
@@ -23,7 +26,7 @@ class Session : UIViewController
     //curry magic
     func assignPart (x: Int) -> (UIAlertAction?) -> Void
     {
-        return {_ in print(x)}
+        return {_ in Session.songPartIndexesToDisplay = [x]}
     }
     
     func getPartNumberDesired()
