@@ -8,10 +8,18 @@
 
 // Could use inheritence but this is fine. for now.
 struct TabNote {
-    let isRest: Bool
+    let rest: Bool
+    var offset: Int
     let duration: Int
     let stringNumber: Int
     let fret: Int
+}
+
+struct Measure
+{
+    var tabNotes: [TabNote] = []
+    var duration: Int = 0
+    var secondsPerDuration: Double = 0
 }
 
 import Foundation
@@ -19,16 +27,105 @@ class MusicXMLPart
 {
     public var partName: String
     public var stringCount: Int
-    public var divCount: Int
-    public var tabNotes: [TabNote]
+    public var measures: [Measure]
     
     // should use a builder here.
-    private init(pname: String, strings: Int, dCount: Int)
+    private init(pname: String, strings: Int, allMeasures: [Measure])
     {
         partName = pname
         stringCount = strings
-        divCount = dCount
-        tabNotes = []
+        measures = allMeasures
+    }
+    
+    public static func parseNote(xml: XMLIndexer) -> TabNote
+    {
+        var duration: Int = 0;
+        var stringNumber: Int = 0;
+        var fretNumber: Int = 0;
+        var isRest: Bool = false;
+        for noteattr in xml.children
+        {
+            switch(noteattr.element!.name)
+            {
+                case "duration":
+                    duration = Int(noteattr[0].element!.text!)!
+                    break;
+                case "rest":
+                    isRest = true
+                    break;
+                case "notations":
+                    stringNumber = Int(noteattr["technical"]["string"][0].element!.text!)!
+                    fretNumber = Int(noteattr["technical"]["fret"][0].element!.text!)!
+                    break;
+                default:
+                    break;
+            }
+        }
+        let tabnote: TabNote =  TabNote(rest: isRest, offset: 0, duration: duration, stringNumber: stringNumber, fret: fretNumber)
+        return tabnote
+    }
+    
+    public static func parseMeasures(xml: XMLIndexer) -> [Measure]
+    {
+        var measures: [Measure] = []
+        var divisions: Int = 0
+        
+        for XMLmeasure in xml["measure"].all
+        {
+            var measure: Measure = Measure()
+            var playhead: Int = 0;
+            for event in XMLmeasure.children
+            {
+                switch(event.element!.name)
+                {
+                    case "attributes":
+                        //read any attributes passed that are relevant
+                        // We care about divisions, and time.
+                        for attribute in event.children
+                        {
+                            switch(attribute.element!.name)
+                            {
+                                case "divisions":
+                                    divisions = Int(attribute[0].element!.text!)!
+                                    break;
+                                case "time":
+                                    // Find duration, in divisions.
+                                    let beats: Double = Double(attribute["beats"][0].element!.text!)!
+                                    let beattype: Int = Int(attribute["beat-type"][0].element!.text!)!
+                                    // beattype is 4 for quarter notes, and 8 for eighth notes, etc...
+                                    // so, let's find quater notes per beat.
+                                    let quarterNotesPerBeat: Double = 4.0 / Double(beattype)
+                                    
+                                    //careful-- might lose some precision here
+                                    let totalDurationInDivisions: Int = Int(beats * quarterNotesPerBeat * Double(divisions))
+                                    
+                                    measure.duration = totalDurationInDivisions
+                                    break;
+                                default:
+                                    print("In measure attributes: Ignored " + attribute.element!.name)
+                                    break;
+                            }
+                        }
+                        break;
+                    
+                    case "note":
+                        var tabNote:TabNote = parseNote(xml: event)
+                        if(!tabNote.rest)
+                        {
+                            tabNote.offset = playhead
+                            measure.tabNotes.append(tabNote)
+                        }
+                        playhead += tabNote.duration
+
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+        measures.append(measure)
+        }
+        return measures
     }
     
     public static func parseMusicXML(xml: XMLIndexer) -> [MusicXMLPart]
@@ -41,60 +138,9 @@ class MusicXMLPart
             // we can get the string count in the first measure.
             let scoreAttrs = Session.songXMLs[0]["score-partwise"]["part"][index]["measure"][0]["attributes"]
             
-            let divCount = Int(scoreAttrs["divisions"][0].element!.text!)
-            
             let stringCount = Int(scoreAttrs["staff-details"]["staff-lines"].element!.text!)
-            
-            let part = MusicXMLPart(pname: partName, strings: stringCount!, dCount: divCount!)
-            
-            // the "divcount" seems to be the qtr note.
-            // Now let's extract the beats per measure.
-            // Also consider the beat type.
-            
-            //he divisions element provided the unit of measure for the duration element in terms of divisions per quarter note.
-        
-            // In a tab, the only thing we care about is time,
-            // So keep track of the time of each note in the "div" unit.
-            
-            // WAYY too complex
-            for measure in Session.songXMLs[0]["score-partwise"]["part"][index]["measure"].all
-            {
-                //cannot handle backup or forward yet.
-                for event in measure.children
-                {
-                    if(event.element!.name == "note")
-                    {
-                        var foundRest = false;
-                        //first look for a rest.
-                        for maybeRest in event.children
-                        {
-                            //If there is a rest, rest.
-                            if(maybeRest.element!.name == "rest")
-                            {
-                            let duration = event["duration"].element!.text!
-                            part.tabNotes.append(TabNote(isRest: false, duration: Int(duration)!, stringNumber: -1, fret: -1))
-                                foundRest = true
-                            }
-                        }
-                        
-                        if(!foundRest)
-                        {
-                        
-                        let duration = event["duration"].element!.text!
-                        let a = event["notations"]
-                        let b = a["technical"]
-                        let stringNumber = event["notations"]["technical"]["string"][0].element!.text!
-                        let fretNumber = event["notations"]["technical"]["fret"][0].element!.text!
-                        part.tabNotes.append(TabNote(isRest: false, duration: Int(duration)!, stringNumber: Int(stringNumber)!, fret: Int(fretNumber)!))
-                        }
-
-                    }
-                    
-                    
-                }
-                
-                
-            }
+            let measures = parseMeasures(xml: Session.songXMLs[0]["score-partwise"]["part"][index])
+            let part = MusicXMLPart(pname: partName, strings: stringCount!, allMeasures: measures)
             parts.append(part)
             
         }
