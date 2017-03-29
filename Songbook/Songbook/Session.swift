@@ -11,10 +11,11 @@ import UIKit
 
 class Session : UIViewController
 {
-    //TODO dump songs into a more friendly data struct based on musicXML specs.
     static var songXMLs : [XMLIndexer] = []
     static var songParts : [MusicXMLPart]?
     static var songPartIndexesToDisplay : [Int] = []
+    
+    static var startTime = 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
