@@ -63,7 +63,15 @@ public class SessionMusicDisplay: UIView
                 
                 for note in measure.tabNotes
                 {
+                    let fret = String(note.fret)
+                    let string_y = top + (linespacing)*Double(note.stringNumber) //+ (linespacing) * Double(note.stringNumber+1)
+                    let y = string_y * Double(h)
+                    let tempPlayhead = playhead + Double(note.offset) * measure.secondsPerDuration
+                    let width_ratio = (0.25) + (tempPlayhead - song_seconds_elapsed)*width_per_second
+                    let size = (Double(h) * linespacing) / 2
+                    let drawAttr = [ NSFontAttributeName: UIFont(name: "Chalkduster", size: CGFloat(size))! ]
                     
+                    fret.draw(with: CGRect(x: Double(w) * width_ratio - (size/2), y: y - (size/2), width: Double(h), height: Double(h)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
                 }
                 
                 playhead = playhead + Double(measure.duration) * measure.secondsPerDuration
@@ -91,5 +99,7 @@ public class SessionMusicDisplay: UIView
     {
         self.setNeedsDisplay()
     }
+    
+    //struct layoutAttrs for easier use.
     
 }
