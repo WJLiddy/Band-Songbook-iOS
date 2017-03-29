@@ -19,7 +19,8 @@ struct Measure
 {
     var tabNotes: [TabNote] = []
     var duration: Int = 0
-    var secondsPerDuration: Double = 0
+    //hardcoded for now: 960
+    var secondsPerDuration: Double = 0.0005
 }
 
 import Foundation
@@ -69,11 +70,13 @@ class MusicXMLPart
     {
         var measures: [Measure] = []
         var divisions: Int = 0
-        
+        var lastMeasureDuration: Int = 0;
         for XMLmeasure in xml["measure"].all
         {
             var measure: Measure = Measure()
             var playhead: Int = 0;
+
+            
             for event in XMLmeasure.children
             {
                 switch(event.element!.name)
@@ -99,7 +102,7 @@ class MusicXMLPart
                                     //careful-- might lose some precision here
                                     let totalDurationInDivisions: Int = Int(beats * quarterNotesPerBeat * Double(divisions))
                                     
-                                    measure.duration = totalDurationInDivisions
+                                    lastMeasureDuration = totalDurationInDivisions
                                     break;
                                 default:
                                     print("In measure attributes: Ignored " + attribute.element!.name)
@@ -123,6 +126,7 @@ class MusicXMLPart
                 }
                 
             }
+            measure.duration = lastMeasureDuration;
         measures.append(measure)
         }
         return measures

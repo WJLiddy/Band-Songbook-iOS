@@ -15,7 +15,7 @@ class Session : UIViewController
     static var songParts : [MusicXMLPart]?
     static var songPartIndexesToDisplay : [Int] = []
     
-    static var startTime = 
+    static var playbackStartTime = Date().timeIntervalSince1970;
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

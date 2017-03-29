@@ -17,6 +17,7 @@ public class SessionMusicDisplay: UIView
     public override func draw(_ frame: CGRect) {
         let h = frame.height
         let w = frame.width
+        let width_per_second = 0.2
         
         let stavecount = Double(Session.songPartIndexesToDisplay.count)
         let edgemargin = 0.1
@@ -26,11 +27,7 @@ public class SessionMusicDisplay: UIView
         {
             let partToDraw = Session.songParts![indexToDisplay]
             let top = edgemargin + (Double(index) * stave_space_ratio)
-            
-
-
             let linecount = partToDraw.stringCount
-            
             let linespacing = stave_space_ratio / Double(linecount+2)
             for line in 0...(linecount - 1)
             {
@@ -42,9 +39,34 @@ public class SessionMusicDisplay: UIView
                 aPath.addLine(to: CGPoint(x:Double(w), y:string_y * Double(h)))
                 aPath.close()
                 
-                //If you want to stroke it with a red color
                 UIColor.black.set()
                 aPath.stroke()
+            }
+            
+            let currentTime = Date().timeIntervalSince1970
+            let song_seconds_elapsed = currentTime - Session.playbackStartTime
+            var playhead = 0.0;
+            
+            for measure in partToDraw.measures
+            {
+                //draw barline
+                let aPath = UIBezierPath()
+                //playhead centered at 0.25
+                let width_ratio = (0.25) + (playhead - song_seconds_elapsed)*width_per_second
+                aPath.move(to: CGPoint(x:Double(w) * width_ratio, y:0))
+                aPath.addLine(to: CGPoint(x:Double(w) * width_ratio, y:Double(h)))
+                aPath.close()
+                
+                //If you want to stroke it with a red color
+                UIColor.gray.set()
+                aPath.stroke()
+                
+                for note in measure.tabNotes
+                {
+                    
+                }
+                
+                playhead = playhead + Double(measure.duration) * measure.secondsPerDuration
             }
             
             //Draw note marker
