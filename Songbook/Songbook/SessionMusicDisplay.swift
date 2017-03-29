@@ -14,6 +14,7 @@ public class SessionMusicDisplay: UIView
         updateTimer = Timer.scheduledTimer(timeInterval: 0.05, target:self, selector: #selector(drawNextFrame), userInfo: nil, repeats: true)
     }
     
+    //TODO: Clean up this whole method. It's complex and messy.
     public override func draw(_ frame: CGRect) {
         let h = frame.height
         let w = frame.width
@@ -68,8 +69,8 @@ public class SessionMusicDisplay: UIView
                     let y = string_y * Double(h)
                     let tempPlayhead = playhead + Double(note.offset) * measure.secondsPerDuration
                     let width_ratio = (0.25) + (tempPlayhead - song_seconds_elapsed)*width_per_second
-                    let size = (Double(h) * linespacing) / 2
-                    let drawAttr = [ NSFontAttributeName: UIFont(name: "Chalkduster", size: CGFloat(size))! ]
+                    let size = (Double(h) * linespacing) / 3
+                    var drawAttr = [ NSFontAttributeName: UIFont(name: "Chalkduster", size: CGFloat(size))! , NSForegroundColorAttributeName: UIColor.blue]
                     
                     fret.draw(with: CGRect(x: Double(w) * width_ratio - (size/2), y: y - (size/2), width: Double(h), height: Double(h)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
                 }
@@ -100,6 +101,5 @@ public class SessionMusicDisplay: UIView
         self.setNeedsDisplay()
     }
     
-    //struct layoutAttrs for easier use.
     
 }

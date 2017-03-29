@@ -13,6 +13,7 @@ struct TabNote {
     let duration: Int
     let stringNumber: Int
     let fret: Int
+    let chordal: Bool
 }
 
 struct Measure
@@ -44,6 +45,7 @@ class MusicXMLPart
         var stringNumber: Int = 0;
         var fretNumber: Int = 0;
         var isRest: Bool = false;
+        var isChordal: Bool = false
         for noteattr in xml.children
         {
             switch(noteattr.element!.name)
@@ -54,6 +56,9 @@ class MusicXMLPart
                 case "rest":
                     isRest = true
                     break;
+                case "chord":
+                    isChordal = true
+                    break;
                 case "notations":
                     stringNumber = Int(noteattr["technical"]["string"][0].element!.text!)!
                     fretNumber = Int(noteattr["technical"]["fret"][0].element!.text!)!
@@ -62,7 +67,7 @@ class MusicXMLPart
                     break;
             }
         }
-        let tabnote: TabNote =  TabNote(rest: isRest, offset: 0, duration: duration, stringNumber: stringNumber, fret: fretNumber)
+        let tabnote: TabNote =  TabNote(rest: isRest, offset: 0, duration: duration, stringNumber: stringNumber, fret: fretNumber, chordal: isChordal)
         return tabnote
     }
     
@@ -118,8 +123,11 @@ class MusicXMLPart
                             tabNote.offset = playhead
                             measure.tabNotes.append(tabNote)
                         }
-                        playhead += tabNote.duration
-
+                        
+                        if(!tabNote.chordal)
+                        {
+                            playhead += tabNote.duration
+                        }
                         break;
                     default:
                         break;
