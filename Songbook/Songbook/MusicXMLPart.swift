@@ -80,6 +80,7 @@ class MusicXMLPart
         {
             var measure: Measure = Measure()
             var playhead: Int = 0;
+            var playheadLast: Int = 0;
 
             
             for event in XMLmeasure.children
@@ -120,12 +121,13 @@ class MusicXMLPart
                         var tabNote:TabNote = parseNote(xml: event)
                         if(!tabNote.rest)
                         {
-                            tabNote.offset = playhead
+                            tabNote.offset = tabNote.chordal ? playheadLast : playhead
                             measure.tabNotes.append(tabNote)
                         }
                         
                         if(!tabNote.chordal)
                         {
+                            playheadLast = playhead
                             playhead += tabNote.duration
                         }
                         break;

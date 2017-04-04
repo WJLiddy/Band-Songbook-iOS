@@ -15,18 +15,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let demoSongs: [String] = ["Green Day - When I Come Around v4","Blink 182 - All The Small Things","Traditional - Silent Night"]
+        
+        let fileManager = FileManager.default
+        
+        var resourceFiles: [String] = []
+        let resourcesPath = Bundle.main.resourcePath!
+
+        do {
+            resourceFiles = try fileManager.contentsOfDirectory(atPath: resourcesPath)
+        } catch {
+            print(error)
+        }
+        
         // copy sample song files
-        let fileManger = FileManager.default
-        let doumentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-        for song in demoSongs
+        let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
+        for file in resourceFiles
         {
-            let destinationPath = doumentDirectoryPath.appendingPathComponent(song + ".xml")
-            let sourcePath = Bundle.main.path(forResource: song , ofType: "xml")
+            if((file as NSString).pathExtension != ".xml")
+            {
+                continue
+            }
+            
+            let destinationPath = documentDirectoryPath.appendingPathComponent(file + ".xml")
+            let sourcePath = Bundle.main.path(forResource: file , ofType: "xml")
             do
             {
-                try fileManger.copyItem(atPath: sourcePath!, toPath: destinationPath)
+                if(fileManager.fileExists(atPath: destinationPath))
+                {
+                    try fileManager.removeItem(atPath: destinationPath)
+                }
+                try fileManager.copyItem(atPath: sourcePath!, toPath: destinationPath)
             } catch
             {
                // will error if file already present

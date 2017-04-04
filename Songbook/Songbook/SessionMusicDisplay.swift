@@ -58,7 +58,6 @@ public class SessionMusicDisplay: UIView
                 aPath.addLine(to: CGPoint(x:Double(w) * width_ratio, y:Double(h)))
                 aPath.close()
                 
-                //If you want to stroke it with a red color
                 UIColor.gray.set()
                 aPath.stroke()
                 
@@ -70,13 +69,29 @@ public class SessionMusicDisplay: UIView
                     let tempPlayhead = playhead + Double(note.offset) * measure.secondsPerDuration
                     let width_ratio = (0.25) + (tempPlayhead - song_seconds_elapsed)*width_per_second
                     let size = (Double(h) * linespacing) / 3
-                    var drawAttr = [ NSFontAttributeName: UIFont(name: "Chalkduster", size: CGFloat(size))! , NSForegroundColorAttributeName: UIColor.blue]
+                    let drawAttr = [ NSFontAttributeName: UIFont(name: "Chalkduster", size: CGFloat(size))! , NSForegroundColorAttributeName: UIColor.blue]
                     
                     fret.draw(with: CGRect(x: Double(w) * width_ratio - (size/2), y: y - (size/2), width: Double(h), height: Double(h)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
                 }
                 
                 playhead = playhead + Double(measure.duration) * measure.secondsPerDuration
             }
+            
+            //draw double barline
+            let cPath = UIBezierPath()
+            //playhead centered at 0.25
+            let width_ratio = (0.25) + (playhead - song_seconds_elapsed)*width_per_second
+            cPath.move(to: CGPoint(x:Double(w) * width_ratio, y:0))
+            cPath.addLine(to: CGPoint(x:Double(w) * width_ratio, y:Double(h)))
+            cPath.close()
+
+            let bPath = UIBezierPath()
+            //playhead centered at 0.25
+            let bwidth_ratio = (0.26) + (playhead - song_seconds_elapsed)*width_per_second
+            bPath.move(to: CGPoint(x:Double(w) * bwidth_ratio, y:0))
+            bPath.addLine(to: CGPoint(x:Double(w) * bwidth_ratio, y:Double(h)))
+            bPath.close()
+            
             
             //Draw note marker
             let aPath = UIBezierPath()

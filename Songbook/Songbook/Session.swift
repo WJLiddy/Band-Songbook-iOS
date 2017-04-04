@@ -32,6 +32,7 @@ class Session : UIViewController
     
     func getPartNumberDesired()
     {        // create the alert
+        let f = Session.songXMLs[0]["score-partwise"]
         let songname = Session.songXMLs[0]["score-partwise"]["work"]["work-title"][0].element!.text!
         let alert = UIAlertController(title: "Select primary part for: ", message: songname, preferredStyle: UIAlertControllerStyle.alert)
 
