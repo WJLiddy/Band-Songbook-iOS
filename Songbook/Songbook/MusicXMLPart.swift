@@ -25,7 +25,6 @@ struct Measure
 {
     var tabNotes: [TabNote] = []
     var duration: Int = 0
-    //hardcoded for now: 960
     var secondsPerDivision: Double = 0.0
 }
 
