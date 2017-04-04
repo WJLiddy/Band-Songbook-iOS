@@ -6,6 +6,11 @@
 //  Copyright © 2017 NeutralSpace. All rights reserved.
 //
 
+/**
+ Tempo is specified in quarter notes per minute.
+the following sound element specifies a tempo of quarter note = 88 with a MIDI velocity of 64:
+ */
+
 // Could use inheritence but this is fine. for now.
 struct TabNote {
     let rest: Bool
@@ -21,7 +26,7 @@ struct Measure
     var tabNotes: [TabNote] = []
     var duration: Int = 0
     //hardcoded for now: 960
-    var secondsPerDuration: Double = 0.0005
+    var secondsPerDivision: Double = 0.0
 }
 
 import Foundation
@@ -76,6 +81,7 @@ class MusicXMLPart
         var measures: [Measure] = []
         var divisions: Int = 0
         var lastMeasureDuration: Int = 0;
+        var tempo: Int = 0;
         for XMLmeasure in xml["measure"].all
         {
             var measure: Measure = Measure()
@@ -111,7 +117,7 @@ class MusicXMLPart
                                     lastMeasureDuration = totalDurationInDivisions
                                     break;
                                 default:
-                                    print("In measure attributes: Ignored " + attribute.element!.name)
+                                    //print("In measure attributes: Ignored " + attribute.element!.name)
                                     break;
                             }
                         }
@@ -131,13 +137,23 @@ class MusicXMLPart
                             playhead += tabNote.duration
                         }
                         break;
+                    
+                    case "direction":
+                        tempo = Int((event["sound"][0].element?.attribute(by: "tempo")?.text)!)!
+                        //set tempo <direction placement="above">
+                        //<sound tempo="160"/>
+                        //</direction>
+                        break;
                     default:
                         break;
                 }
                 
             }
             measure.duration = lastMeasureDuration;
+            measure.secondsPerDivision =  1.0 / (Double(divisions) * (Double(tempo) / 60.0))
         measures.append(measure)
+        // tempo is in quarters per minute
+        // "divisions" is one quarter note
         }
         return measures
     }
