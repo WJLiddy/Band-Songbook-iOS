@@ -18,7 +18,7 @@ public class SessionMusicDisplay: UIView
     public override func draw(_ frame: CGRect) {
         let h = frame.height
         let w = frame.width
-        let width_per_second = 0.2
+        let width_per_second = 0.3
         
         let stavecount = Double(Session.songPartIndexesToDisplay.count)
         let edgemargin = 0.1
@@ -68,8 +68,8 @@ public class SessionMusicDisplay: UIView
                     let y = string_y * Double(h)
                     let tempPlayhead = playhead + Double(note.offset) * measure.secondsPerDivision
                     let width_ratio = (0.25) + (tempPlayhead - song_seconds_elapsed)*width_per_second
-                    let size = (Double(h) * linespacing) / 3
-                    let drawAttr = [ NSFontAttributeName: UIFont(name: "Chalkduster", size: CGFloat(size))! , NSForegroundColorAttributeName: UIColor.blue]
+                    let size = ((Double(h) * linespacing) / 1.5)
+                    let drawAttr = [ NSFontAttributeName: UIFont(name: "Avenir Next Condensed", size: CGFloat(size))! , NSForegroundColorAttributeName: UIColor.blue]
                     
                     fret.draw(with: CGRect(x: Double(w) * width_ratio - (size/2), y: y - (size/2), width: Double(h), height: Double(h)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
                 }
@@ -111,10 +111,32 @@ public class SessionMusicDisplay: UIView
         //NSLog("drawRect has updated the view")
     }
     
+    @IBAction func onFastForwardFast(_ sender: Any) {
+                print("fff pressed")
+    }
+    @IBAction func onFastForward(_ sender: Any) {
+                print("ff pressed")
+    }
+    @IBAction func onPlay(_ sender: Any) {
+                print("play pressed")
+    }
     public func drawNextFrame()
     {
         self.setNeedsDisplay()
     }
     
+    @IBAction func onRestart(_ sender: Any) {
+        print("restart pressed")
+    }
     
+    @IBAction func onRewindFast(_ sender: Any) {
+                print("rwf pressed")
+    }
+    @IBAction func onStop(_ sender: Any) {
+                print("stop pressed")
+    }
+    
+    @IBAction func onRewind(_ sender: Any) {
+                print("rw pressed")
+    }
 }

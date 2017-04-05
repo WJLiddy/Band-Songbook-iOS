@@ -115,6 +115,9 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onRestart:" destination="plX-sA-Dhe" eventType="touchUpInside" id="OYj-MH-Clb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPr-7R-x0D" userLabel="RewindFast">
                                         <rect key="frame" x="89.5" y="0.0" width="89.5" height="75"/>
@@ -124,6 +127,9 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onRewindFast:" destination="plX-sA-Dhe" eventType="touchUpInside" id="eeJ-IL-XRy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETa-Z6-Rbw" userLabel="Rewind">
                                         <rect key="frame" x="179" y="0.0" width="89.5" height="75"/>
@@ -133,6 +139,9 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onRewind:" destination="plX-sA-Dhe" eventType="touchUpInside" id="0yU-WQ-SDz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7B-vP-R3m" userLabel="Stop">
                                         <rect key="frame" x="268.5" y="0.0" width="90" height="75"/>
@@ -142,6 +151,9 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onStop:" destination="plX-sA-Dhe" eventType="touchUpInside" id="jlo-wT-mRt"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alY-6W-o8V" userLabel="Play">
                                         <rect key="frame" x="358.5" y="0.0" width="89.5" height="75"/>
@@ -151,6 +163,9 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onPlay:" destination="plX-sA-Dhe" eventType="touchUpInside" id="2PM-Lq-BTx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P98-t6-qct" userLabel="FastForward">
                                         <rect key="frame" x="448" y="0.0" width="89.5" height="75"/>
@@ -160,6 +175,9 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onFastForward:" destination="plX-sA-Dhe" eventType="touchUpInside" id="gxF-i1-dDY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGL-sR-VG8" userLabel="FastForwardFast">
                                         <rect key="frame" x="537.5" y="0.0" width="89.5" height="75"/>
@@ -169,6 +187,9 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onFastForwardFast:" destination="plX-sA-Dhe" eventType="touchUpInside" id="azb-19-ScG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
