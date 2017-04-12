@@ -135,7 +135,7 @@ class MusicXMLPart
         for (index,element) in Session.songXMLs[0]["score-partwise"]["part-list"]["score-part"].all.enumerated()
         {
             let partName = element["part-name"][0].element!.text!
-            let midiChannel = element["midi-channel"][0].element!.text!
+            let midiChannel = element["midi-instrument"]["midi-channel"][0].element!.text!
             // We need to see if this is a percussion or a tabbed part.
             // Do this by checking the midi channel: 10 means percussion
             
@@ -365,9 +365,11 @@ class MusicXMLDrumPart : MusicXMLPart
             // inverse of div / quarter * quater / min ... just trust me, this conversion works.
             let secondsPerDivision =  1.0 / (Double(mp.divisionsPerQuarter) * (Double(mp.tempo) / 60.0))
             let measure = DrumMeasure(duration: mp.lastMeasureDivisions, secondsPerDivision: secondsPerDivision, timeFromStart: mp.totalTimeElapsed)
+            measure.notes = notes;
 
             mp.totalTimeElapsed += Double(measure.duration) * measure.secondsPerDivision;
             measures.append(measure)
+
         }
         return measures
     }
@@ -437,6 +439,7 @@ class MusicXMLTabPart : MusicXMLPart
             // inverse of div / quarter * quater / min ... just trust me, this conversion works.
             let secondsPerDivision =  1.0 / (Double(mp.divisionsPerQuarter) * (Double(mp.tempo) / 60.0))
             let measure = TabMeasure(duration: mp.lastMeasureDivisions, secondsPerDivision: secondsPerDivision, timeFromStart: mp.totalTimeElapsed)
+            measure.notes = notes;
             
             mp.totalTimeElapsed += Double(measure.duration) * measure.secondsPerDivision;
             measures.append(measure)

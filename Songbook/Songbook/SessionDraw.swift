@@ -134,7 +134,7 @@ class SessionDraw
             for note in (measure as! TabMeasure).notes
             {
                 let fret = String(note.fret)
-                let string_y = staveLocations[index][note.string]
+                let string_y = staveLocations[index][note.string-1]
                 let y = string_y * Double(h)
                 let tempPlayhead = playhead + Double(note.rhythm.offset) * measure.secondsPerDivision
                 let width_ratio = (0.25) + (tempPlayhead - song_seconds_elapsed)*width_per_second
