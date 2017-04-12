@@ -1,11 +1,3 @@
-//
-//  MusicXMLPart.swift
-//  Songbook
-//
-//  Created by William Liddy on 3/22/17.
-//  Copyright © 2017 NeutralSpace. All rights reserved.
-//
-
 /**
  Tempo is specified in quarter notes per minute.
 the following sound element specifies a tempo of quarter note = 88 with a MIDI velocity of 64:
