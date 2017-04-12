@@ -15,7 +15,13 @@ class Session : UIViewController
     static var songParts : [MusicXMLPart]?
     static var songPartIndexesToDisplay : [Int] = []
     
+    //playback info
+    
+    static var playbackStarted = false;
+    // If playback has started, start at this time:
     static var playbackStartTime = Date().timeIntervalSince1970;
+    //Otherwise we are stopped at this measure:
+    static var stopMeasure = 0;
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

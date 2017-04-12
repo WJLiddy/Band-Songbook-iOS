@@ -26,6 +26,7 @@ struct Measure
     var tabNotes: [TabNote] = []
     var duration: Int = 0
     var secondsPerDivision: Double = 0.0
+    var timeFromStart: Double = 0.0;
 }
 
 import Foundation
@@ -81,6 +82,7 @@ class MusicXMLPart
         var divisions: Int = 0
         var lastMeasureDuration: Int = 0;
         var tempo: Int = 0;
+        var timeFromStart = 0.0;
         for XMLmeasure in xml["measure"].all
         {
             var measure: Measure = Measure()
@@ -148,8 +150,10 @@ class MusicXMLPart
                 }
                 
             }
+            measure.timeFromStart = timeFromStart;
             measure.duration = lastMeasureDuration;
             measure.secondsPerDivision =  1.0 / (Double(divisions) * (Double(tempo) / 60.0))
+            timeFromStart += Double(measure.duration) * measure.secondsPerDivision;
         measures.append(measure)
         // tempo is in quarters per minute
         // "divisions" is one quarter note

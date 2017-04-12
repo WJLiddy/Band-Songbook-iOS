@@ -45,11 +45,33 @@ public class SessionMusicDisplay: UIView
             }
             
             let currentTime = Date().timeIntervalSince1970
-            let song_seconds_elapsed = currentTime - Session.playbackStartTime
+            
+            var song_seconds_elapsed = 0.0;
+            if(Session.playbackStarted)
+            {
+                song_seconds_elapsed = currentTime - Session.playbackStartTime
+            } else
+            {
+                song_seconds_elapsed = partToDraw.measures[Session.stopMeasure].timeFromStart
+            }
+            //refers to where we drawing
             var playhead = 0.0;
             
+            var measureno = 0;
             for measure in partToDraw.measures
             {
+                //measure is underway but not finished
+                if(Session.playbackStarted)
+                {
+                    let dif = song_seconds_elapsed - measure.timeFromStart
+                    if(dif > 0 && dif < Double(measure.duration) * measure.secondsPerDivision)
+                    {
+                        Session.stopMeasure = measureno
+                    }
+                    //print(Session.stopMeasure)
+                }
+                //dis be sloppy
+                measureno += 1;
                 //draw barline
                 let aPath = UIBezierPath()
                 //playhead centered at 0.25
@@ -118,7 +140,11 @@ public class SessionMusicDisplay: UIView
                 print("ff pressed")
     }
     @IBAction func onPlay(_ sender: Any) {
-                print("play pressed")
+        Session.playbackStarted = true;
+        Session.playbackStartTime = Date().timeIntervalSince1970;
+        Session.playbackStartTime -= (Session.songParts?[0].measures[Session.stopMeasure].timeFromStart)!
+        print("play pressed")
+        
     }
     public func drawNextFrame()
     {
@@ -133,7 +159,8 @@ public class SessionMusicDisplay: UIView
                 print("rwf pressed")
     }
     @IBAction func onStop(_ sender: Any) {
-                print("stop pressed")
+        Session.playbackStarted = false;
+        print("stop pressed")
     }
     
     @IBAction func onRewind(_ sender: Any) {
