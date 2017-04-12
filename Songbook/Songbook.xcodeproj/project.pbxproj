@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		241EE4F21E9ED8FA00FA8408 /* SessionDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241EE4F11E9ED8FA00FA8408 /* SessionDraw.swift */; };
 		2439BEFD1E84BADD00FFB108 /* SessionMusicDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */; };
 		247DC58A1E8215730005B489 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5891E8215730005B489 /* Lobby.swift */; };
 		247DC59B1E821D590005B489 /* FBFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5901E821D590005B489 /* FBFile.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		241EE4F11E9ED8FA00FA8408 /* SessionDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDraw.swift; sourceTree = "<group>"; };
 		2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionMusicDisplay.swift; sourceTree = "<group>"; };
 		247DC5891E8215730005B489 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		247DC5901E821D590005B489 /* FBFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FBFile.swift; path = FileBrowser/FBFile.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				24FDFD0A1E5F6C73006CDE78 /* Songbook-Bridging-Header.h */,
 				24FA50431E81EAFC0099534C /* UIErrorMessage.swift */,
 				24FA50411E81D6210099534C /* MainMenu.swift */,
+				241EE4F11E9ED8FA00FA8408 /* SessionDraw.swift */,
 				247DC5891E8215730005B489 /* Lobby.swift */,
 				247DC5C21E8254E30005B489 /* Session.swift */,
 				2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */,
@@ -421,6 +424,7 @@
 				247DC5A11E821D590005B489 /* FileListViewController.swift in Sources */,
 				247DC5A21E821D590005B489 /* FileParser.swift in Sources */,
 				247DC5A31E821D590005B489 /* PreviewManager.swift in Sources */,
+				241EE4F21E9ED8FA00FA8408 /* SessionDraw.swift in Sources */,
 				247DC5A41E821D590005B489 /* PreviewTransitionViewController.swift in Sources */,
 				247DC5A51E821D590005B489 /* WebviewPreviewViewContoller.swift in Sources */,
 				24FDFD0E1E5F6C75006CDE78 /* ysocket.swift in Sources */,
