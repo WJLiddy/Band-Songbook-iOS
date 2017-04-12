@@ -96,8 +96,8 @@ class DrumMeasure : Measure
     var notes : [DrumNote]
     override init(duration: Int, secondsPerDivision: Double, timeFromStart: Double)
     {
+        self.notes = []
         super.init(duration: duration,secondsPerDivision : secondsPerDivision,timeFromStart: timeFromStart)
-        notes = []
     }
 }
 
@@ -106,8 +106,8 @@ class TabMeasure : Measure
     var notes : [TabNote]
     override init(duration: Int, secondsPerDivision: Double, timeFromStart: Double)
     {
+        self.notes = []
         super.init(duration: duration,secondsPerDivision : secondsPerDivision,timeFromStart: timeFromStart)
-        notes = []
     }
 }
 
@@ -159,15 +159,219 @@ class MusicXMLPart
         }
         return parts
     }
+    
+    //calcluate how many divisions are in a meaure
+    public static func calculateMeasureDivisions(divisionsPerQuarter: Int, attribute : XMLIndexer) -> Int
+    {
+        // Find the time signature of the measure. (beats / beat type)
+        let beats: Double = Double(attribute["beats"][0].element!.text!)!
+        let beattype: Int = Int(attribute["beat-type"][0].element!.text!)!
+        
+        // Convert the time signature to find the quarter notes per beat.
+        // beattype is 4 for quarter notes, and 8 for eighth notes, etc...
+        let quarterNotesPerBeat: Double = 4.0 / Double(beattype)
+        
+        // Now, since we know the divisions per quarter note, we can find the total divisons
+        return Int(beats * quarterNotesPerBeat * Double(divisionsPerQuarter))
+        
+    }
+    
+    struct MusicParameters
+    {
+        // divisions are given to us as divs per quarter
+        var divisionsPerQuarter: Int = 0
+        // How many divisions was in the last measure?
+        // If this does not change, it carries over to the next measure.
+        var lastMeasureDivisions: Int = 0;
+        // Tempo is returned in BMP. This is like lastmeasure divisions. It can change based on the song.
+        var tempo: Int = 0;
+        // This measures the time from the end of the previous measure.
+        // We need this because we need the timestamp for each measure.
+        var totalTimeElapsed = 0.0;
+    }
+    
+    public static func updateMusicParameters(mp : inout MusicParameters, event: XMLIndexer)
+    {
+        switch(event.element!.name)
+        {
+            case "attributes":
+            //read any attributes that are relevant in this measure.
+            for attribute in event.children
+            {
+                switch(attribute.element!.name)
+                {
+                    case "divisions":
+                        mp.divisionsPerQuarter = Int(attribute[0].element!.text!)!
+                    break;
+                    case "time":
+                        mp.lastMeasureDivisions = calculateMeasureDivisions(divisionsPerQuarter: mp.divisionsPerQuarter, attribute: attribute)
+                    break;
+                    default:
+                        // read some attribute that did not matter to us, such as key sig.
+                        //print("In measure attributes: Ignored " + attribute.element!.name)
+                    break;
+                }
+            }
+            break;
+            // The only thing in direction is the tempo.
+            case "direction":
+                mp.tempo = Int((event["sound"][0].element?.attribute(by: "tempo")?.text)!)!
+            break;
+            default:break;
+        }
+    }
+    
+    public static func noteIsRest(xml: XMLIndexer) -> Bool
+    {
+        var rest = false;
+        //TODO lookup vs iteration
+        for noteattr in xml.children
+        {
+            switch(noteattr.element!.name)
+            {
+                case "rest":
+                    rest = true
+                break;
+                default:break;
+            }
+        }
+        return rest;
+    }
+    
+    public static func noteIsChord(xml: XMLIndexer) -> Bool
+    {
+        var chord = false;
+        //TODO lookup vs iteration
+        for noteattr in xml.children
+        {
+            switch(noteattr.element!.name)
+            {
+            case "chord":
+                chord = true
+                break;
+                default:break;
+            }
+        }
+        return chord;
+    }
+    
+    public static func getNoteDuration(xml: XMLIndexer) -> Int
+    {
+        var duration: Int = 0;
+        for noteattr in xml.children
+        {
+            //TODO lookup vs iteration
+            switch(noteattr.element!.name)
+            {
+            case "duration":
+                duration = Int(noteattr[0].element!.text!)!
+                break;
+            default:
+                break;
+            }
+        }
+        return duration;
+    }
+    
+    public static func getNoteString(xml: XMLIndexer) -> Int
+    {
+        var stringNumber: Int = 0;
+        for noteattr in xml.children
+        {
+            //TODO lookup vs iteration
+            switch(noteattr.element!.name)
+            {
+            case "notations":
+                stringNumber = Int(noteattr["technical"]["string"][0].element!.text!)!
+                break;
+            default:
+                break;
+            }
+        }
+        return stringNumber;
+    }
+    
+    public static func getNoteFret(xml: XMLIndexer) -> Int
+    {
+        var fretNumber: Int = 0;
+        for noteattr in xml.children
+        {
+            //TODO lookup vs iteration
+            switch(noteattr.element!.name)
+            {
+            case "notations":
+                 fretNumber = Int(noteattr["technical"]["fret"][0].element!.text!)!
+                break;
+            default:
+                break;
+            }
+        }
+        return fretNumber;
+    }
+    
 }
 
 class MusicXMLDrumPart : MusicXMLPart
 {
-    
     public static func parseMeasures(xml: XMLIndexer) -> [Measure]
     {
-        return []
+        var mp = MusicParameters()
+        var measures = [DrumMeasure]()
+        
+        for XMLmeasure in xml["measure"].all
+        {
+            // The playhead is responsible for keeping track of the division number of the end of the last note.
+            var playhead: Int = 0;
+            // need to keep track of where the playhead was last in case a chord is tacked on to some note.
+            var playheadLast: Int = 0;
+            var notes = [DrumNote]()
+            for event in XMLmeasure.children
+            {
+                switch(event.element!.name)
+                {
+                // attributes and direction have general information about a measure (such as tempo change, etc)
+                case "attributes","direction":
+                    updateMusicParameters(mp: &mp, event: event)
+                break;
+                // Then we have notes. Pass these to the proper parser.
+                case "note":
+                    
+                    //First, see if this is a rest. If it is, just push the playhead up.
+                    if(noteIsRest(xml: event))
+                    {
+                        playheadLast = playhead
+                        playhead += getNoteDuration(xml: event)
+                        continue;
+                    }
+                    
+                    let start = noteIsChord(xml: event) ? playheadLast : playhead
+                    //Otherwise this is a real note.
+                    let note = DrumNote(noteType: DrumNote.NoteType.bass, rhythm: Rhythm(offset: start, duration: getNoteDuration(xml: event)))
+                    
+                    //If the note is not part of a chord, push the playhead.
+                    if(!noteIsChord(xml: event))
+                    {
+                        playheadLast = playhead
+                        playhead += note.rhythm.duration
+                    }
+                    notes.append(note)
+                break;
+                default:
+                    break;
+                }
+                
+            }
+            // finally, create measure of appropriate container type.
+            // inverse of div / quarter * quater / min ... just trust me, this conversion works.
+            let secondsPerDivision =  1.0 / (Double(mp.divisionsPerQuarter) * (Double(mp.tempo) / 60.0))
+            let measure = DrumMeasure(duration: mp.lastMeasureDivisions, secondsPerDivision: secondsPerDivision, timeFromStart: mp.totalTimeElapsed)
+
+            mp.totalTimeElapsed += Double(measure.duration) * measure.secondsPerDivision;
+            measures.append(measure)
+        }
+        return measures
     }
+
 }
 
 class MusicXMLTabPart : MusicXMLPart
@@ -175,136 +379,72 @@ class MusicXMLTabPart : MusicXMLPart
     let strings : Int
     public init(partName: String, strings: Int, measures: [Measure])
     {
-        super.init(partName: partName, measures: measures)
         self.strings = strings;
+        super.init(partName: partName, measures: measures)
     }
     
-    
-    
-    public static func parseNote(xml: XMLIndexer) -> TabNote
-    {
-        var duration: Int = 0;
-        var stringNumber: Int = 0;
-        var fretNumber: Int = 0;
-        var isRest: Bool = false;
-        var isChordal: Bool = false
-        for noteattr in xml.children
-        {
-            switch(noteattr.element!.name)
-            {
-            case "duration":
-                duration = Int(noteattr[0].element!.text!)!
-                break;
-            case "rest":
-                isRest = true
-                break;
-            case "chord":
-                isChordal = true
-                break;
-            case "notations":
-                stringNumber = Int(noteattr["technical"]["string"][0].element!.text!)!
-                fretNumber = Int(noteattr["technical"]["fret"][0].element!.text!)!
-                break;
-            default:
-                break;
-            }
-        }
-        let tabnote: TabNote =  TabNote(rest: isRest, offset: 0, duration: duration, stringNumber: stringNumber, fret: fretNumber, chordal: isChordal)
-        return tabnote
-    }
-    
+    // more of this is copied than i'd like to admit but i cant figure out the polymorphism
+    // I'm close, but it still could use some refactoring.
     public static func parseMeasures(xml: XMLIndexer) -> [Measure]
     {
-        var measures: [Measure] = []
-        var divisions: Int = 0
-        var lastMeasureDuration: Int = 0;
-        var tempo: Int = 0;
-        var timeFromStart = 0.0;
+        var mp = MusicParameters()
+        var measures = [TabMeasure]()
+        
         for XMLmeasure in xml["measure"].all
         {
-            var measure: Measure = Measure()
+            // The playhead is responsible for keeping track of the division number of the end of the last note.
             var playhead: Int = 0;
+            // need to keep track of where the playhead was last in case a chord is tacked on to some note.
             var playheadLast: Int = 0;
-            
-            
+            var notes = [TabNote]()
             for event in XMLmeasure.children
             {
                 switch(event.element!.name)
                 {
-                case "attributes":
-                    //read any attributes passed that are relevant
-                    // We care about divisions, and time.
-                    for attribute in event.children
-                    {
-                        switch(attribute.element!.name)
-                        {
-                        case "divisions":
-                            divisions = Int(attribute[0].element!.text!)!
-                            break;
-                        case "time":
-                            // Find duration, in divisions.
-                            let beats: Double = Double(attribute["beats"][0].element!.text!)!
-                            let beattype: Int = Int(attribute["beat-type"][0].element!.text!)!
-                            // beattype is 4 for quarter notes, and 8 for eighth notes, etc...
-                            // so, let's find quater notes per beat.
-                            let quarterNotesPerBeat: Double = 4.0 / Double(beattype)
-                            
-                            //careful-- might lose some precision here
-                            let totalDurationInDivisions: Int = Int(beats * quarterNotesPerBeat * Double(divisions))
-                            
-                            lastMeasureDuration = totalDurationInDivisions
-                            break;
-                        default:
-                            //print("In measure attributes: Ignored " + attribute.element!.name)
-                            break;
-                        }
-                    }
+                // attributes and direction have general information about a measure (such as tempo change, etc)
+                case "attributes","direction":
+                    updateMusicParameters(mp: &mp, event: event)
                     break;
-                    
+                // Then we have notes. Pass these to the proper parser.
                 case "note":
-                    var tabNote:TabNote = parseNote(xml: event)
-                    if(!tabNote.rest)
-                    {
-                        tabNote.offset = tabNote.chordal ? playheadLast : playhead
-                        measure.tabNotes.append(tabNote)
-                    }
                     
-                    if(!tabNote.chordal)
+                    //First, see if this is a rest. If it is, just push the playhead up.
+                    if(noteIsRest(xml: event))
                     {
                         playheadLast = playhead
-                        playhead += tabNote.duration
+                        playhead += getNoteDuration(xml: event)
+                        continue;
                     }
-                    break;
                     
-                case "direction":
-                    tempo = Int((event["sound"][0].element?.attribute(by: "tempo")?.text)!)!
-                    //set tempo <direction placement="above">
-                    //<sound tempo="160"/>
-                    //</direction>
+                    let start = noteIsChord(xml: event) ? playheadLast : playhead
+                    //Otherwise this is a real note.
+                    let note = TabNote(string: getNoteString(xml: event), fret: getNoteFret(xml: event), rhythm: Rhythm(offset: start, duration: getNoteDuration(xml: event)))
+                    
+                    //If the note is not part of a chord, push the playhead.
+                    if(!noteIsChord(xml: event))
+                    {
+                        playheadLast = playhead
+                        playhead += note.rhythm.duration
+                    }
+                    notes.append(note)
                     break;
                 default:
                     break;
                 }
                 
             }
-            measure.timeFromStart = timeFromStart;
-            measure.duration = lastMeasureDuration;
-            measure.secondsPerDivision =  1.0 / (Double(divisions) * (Double(tempo) / 60.0))
-            timeFromStart += Double(measure.duration) * measure.secondsPerDivision;
+            // finally, create measure of appropriate container type.
+            // inverse of div / quarter * quater / min ... just trust me, this conversion works.
+            let secondsPerDivision =  1.0 / (Double(mp.divisionsPerQuarter) * (Double(mp.tempo) / 60.0))
+            let measure = TabMeasure(duration: mp.lastMeasureDivisions, secondsPerDivision: secondsPerDivision, timeFromStart: mp.totalTimeElapsed)
+            
+            mp.totalTimeElapsed += Double(measure.duration) * measure.secondsPerDivision;
             measures.append(measure)
-            // tempo is in quarters per minute
-            // "divisions" is one quarter note
         }
         return measures
     }
     
-    
-    
 }
 
-
-
-
-}
 
   
