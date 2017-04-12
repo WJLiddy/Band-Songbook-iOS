@@ -93,7 +93,8 @@ public class SessionMusicDisplay: UIView
                     let size = ((Double(h) * linespacing) / 1.5)
                     let drawAttr = [ NSFontAttributeName: UIFont(name: "Avenir Next Condensed", size: CGFloat(size))! , NSForegroundColorAttributeName: UIColor.blue]
                     
-                    fret.draw(with: CGRect(x: Double(w) * width_ratio - (size/2), y: y - (size/2), width: Double(h), height: Double(h)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
+                    let textoffset = note.fret > 9 ? (size/2) : (size/4)
+                    fret.draw(with: CGRect(x: Double(w) * width_ratio - textoffset, y: y - (size/2), width: Double(h), height: Double(h)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
                 }
                 
                 playhead = playhead + Double(measure.duration) * measure.secondsPerDivision
@@ -134,10 +135,12 @@ public class SessionMusicDisplay: UIView
     }
     
     @IBAction func onFastForwardFast(_ sender: Any) {
-                print("fff pressed")
+        print("fff pressed")
+        Session.stopMeasure = min(Session.stopMeasure + 8, (Session.songParts?[0].measures.count)! - 1)
     }
     @IBAction func onFastForward(_ sender: Any) {
-                print("ff pressed")
+        Session.stopMeasure = min(Session.stopMeasure + 1, (Session.songParts?[0].measures.count)! - 1)
+        print("ff pressed")
     }
     @IBAction func onPlay(_ sender: Any) {
         Session.playbackStarted = true;
@@ -153,10 +156,12 @@ public class SessionMusicDisplay: UIView
     
     @IBAction func onRestart(_ sender: Any) {
         print("restart pressed")
+        Session.stopMeasure = 0;
     }
     
     @IBAction func onRewindFast(_ sender: Any) {
-                print("rwf pressed")
+        Session.stopMeasure = max(Session.stopMeasure - 8, 0)
+        print("rwf pressed")
     }
     @IBAction func onStop(_ sender: Any) {
         Session.playbackStarted = false;
@@ -164,6 +169,7 @@ public class SessionMusicDisplay: UIView
     }
     
     @IBAction func onRewind(_ sender: Any) {
-                print("rw pressed")
+        Session.stopMeasure = max(Session.stopMeasure - 1, 0)
+        print("rw pressed")
     }
 }
