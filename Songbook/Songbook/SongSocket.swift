@@ -47,7 +47,7 @@ class SongSocket
                 _recvBuffer = _recvBuffer + str
             }
         }
-        print("IN RECV BUFFER IS" + _recvBuffer)
+        //print("IN RECV BUFFER IS" + _recvBuffer)
         //outstanding message to be sent
         if(_recvBuffer.rangeOfCharacter(from: newline as CharacterSet) != nil)
         {
