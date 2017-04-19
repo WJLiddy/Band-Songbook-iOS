@@ -61,7 +61,7 @@ class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
                 Lobby.usernames = recv!["group members"] as! [String]
             }
             
-            if (recv!["session"] as! String == "end")
+            if (recv!["session"] != nil && recv!["session"] as! String == "end")
             {
                 Lobby.usernames = recv!["group members"] as! [String]
                 //tear down socket and go back to main
@@ -70,7 +70,7 @@ class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
                 performSegue(withIdentifier: "ToMain", sender: nil)
             }
             
-            if (recv!["session"] as! String == "start")
+            if (recv!["session"] != nil && recv!["session"] as! String == "start")
             {
                 performSegue(withIdentifier: "ToSession", sender: nil)
                 //“songs”: [XML #0, XML #1, .... ]

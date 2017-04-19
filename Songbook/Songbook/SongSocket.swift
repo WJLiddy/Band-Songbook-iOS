@@ -32,6 +32,7 @@ class SongSocket
         }
     }
     
+    
     // Reads data from the socket. returns a JSON if it reads one.
     // Otherwise, returns nil if packet is not ready.
     // Throws error if server connection dies.
@@ -44,16 +45,22 @@ class SongSocket
             if let str=String(bytes: d, encoding: String.Encoding.ascii)
             {
                 _recvBuffer = _recvBuffer + str
-                if(str.rangeOfCharacter(from: newline as CharacterSet) != nil)
-                {
-                    // split the buffer
-                    let lineArray = _recvBuffer.components(separatedBy: "\n")
-                    _recvBuffer = lineArray[1];
-                    //Convert String to utf8datastream
-                    let jsondata = lineArray[0].data(using: .utf8)!
-                    return try (JSONSerialization.jsonObject(with: jsondata) as? [String: Any]);
-                }
             }
+        }
+        print("IN RECV BUFFER IS" + _recvBuffer)
+        //outstanding message to be sent
+        if(_recvBuffer.rangeOfCharacter(from: newline as CharacterSet) != nil)
+        {
+            // split the buffer
+            let lineArray = _recvBuffer.components(separatedBy: "\n")
+            _recvBuffer = ""
+            for i in 1..<lineArray.count
+            {
+                _recvBuffer += lineArray[i] + (i == lineArray.count - 1 ? "" : "\n");
+            }
+            //Convert String to utf8datastream
+            let jsondata = lineArray[0].data(using: .utf8)!
+            return try (JSONSerialization.jsonObject(with: jsondata) as? [String: Any]);
         }
         return nil;
     }
