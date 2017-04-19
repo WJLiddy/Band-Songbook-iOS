@@ -21,6 +21,7 @@ class MainMenu : UIViewController
         if(NameField.text == "" || GroupNameField.text == "")
         {
             UIErrorMessage.init(viewController: self, errorMessage: "Please enter a user name and a group name").show()
+            return
         }
         if(setSocket() && requestOK(join: true))
         {
@@ -32,6 +33,7 @@ class MainMenu : UIViewController
         if(NameField.text == "" || GroupNameField.text == "")
         {
             UIErrorMessage.init(viewController: self, errorMessage: "Please enter a user name and a group name").show()
+            return
         }
         if(setSocket() && requestOK(join: false))
         {

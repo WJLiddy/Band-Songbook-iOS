@@ -59,11 +59,12 @@ class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
             if (recv!["group members"] != nil)
             {
                 Lobby.usernames = recv!["group members"] as! [String]
+                tableView.reloadData()
             }
             
             if (recv!["session"] != nil && recv!["session"] as! String == "end")
             {
-                Lobby.usernames = recv!["group members"] as! [String]
+                UIErrorMessage.init(viewController: self, errorMessage: "The session is ending").show()
                 //tear down socket and go back to main
                 SongSocket.socket!.close()
                 updateTimer?.invalidate()
@@ -72,6 +73,13 @@ class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
             
             if (recv!["session"] != nil && recv!["session"] as! String == "start")
             {
+                Session.songXMLs = []
+                // parse sent songXMLs.
+                for song in recv!["songs"] as! [String]
+                {
+                    Session.songXMLs.append(SWXMLHash.parse(song))
+                }
+                
                 performSegue(withIdentifier: "ToSession", sender: nil)
                 //“songs”: [XML #0, XML #1, .... ]
             }
@@ -79,10 +87,6 @@ class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
  
  
 
-        } else
-        {
-            print("NO RECVD MESSAGE")
-            
         }
     }
     
@@ -96,8 +100,8 @@ class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func onPressStart(_ sender: Any) {
         print("Sending " + String(FileBrowser.songsToPlay.count) + " songs")
-        // Don't send yet. I just want to show parsing almost work.
         Session.songXMLs = []
+        var songXMLStrings: [String] = []
         print("parsing...")
         for fname in FileBrowser.songsToPlay
         {
@@ -108,14 +112,18 @@ class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
                 //reading
                 do {
                     let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
+                    songXMLStrings.append(text2)
                     Session.songXMLs.append(SWXMLHash.parse(text2))
                 }
                 catch {/* error handling here */}
             }
         }
+        // send JSONs over the network and await an "ok"
+         SongSocket.socket!.sendRequest(request : StartSessionRequest(songList: songXMLStrings))
         print("proceeding to session")
         //Done! Proceed to the session.
-            performSegue(withIdentifier: "ToSession", sender: nil)
+        updateTimer?.invalidate()
+        performSegue(withIdentifier: "ToSession", sender: nil)
         
         
     }
