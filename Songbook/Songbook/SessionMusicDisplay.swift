@@ -11,21 +11,10 @@ public class SessionMusicDisplay: UIView
     @IBOutlet weak var ffb: UIButton!
     @IBOutlet weak var ffb2: UIButton!
 
-    
+    var didRemove = false;
     var updateTimer: Timer?
     override init(frame: CGRect) {
         super.init(frame: frame)
-        if(!Lobby.isBandLeader)
-        {
-            rwb.removeFromSuperview()
-            rwb2.removeFromSuperview()
-            rwb3.removeFromSuperview()
-            stopb.removeFromSuperview()
-            playb.removeFromSuperview()
-            ffb.removeFromSuperview()
-            ffb2.removeFromSuperview()
-            updateTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(listenForBandLeader), userInfo: nil, repeats: true)
-        }
     }
     
     public func listenForBandLeader()
@@ -45,10 +34,10 @@ public class SessionMusicDisplay: UIView
             if (recv!["session"] != nil && recv!["session"] as! String == "begin playback")
             {
                 
-                print("exec!")
+                print("exec'd 1!")
                 let date = recv!["time"] as! Int
                 let _ = recv!["tempo"] as! Double
-                let measure = recv!["measure "] as! Int
+                let measure = recv!["measure"] as! Int
                 Session.playbackStarted = true;
                 Session.playbackStartTime = Double(date) - (Session.songParts?[0].measures[measure].timeFromStart)!
                 print("play pressed")
@@ -66,6 +55,21 @@ public class SessionMusicDisplay: UIView
     
     
     public override func draw(_ frame: CGRect) {
+        if(!didRemove && !Lobby.isBandLeader && rwb != nil)
+        {
+            rwb.removeFromSuperview()
+            rwb2.removeFromSuperview()
+            rwb3.removeFromSuperview()
+            stopb.removeFromSuperview()
+            playb.removeFromSuperview()
+            ffb.removeFromSuperview()
+            ffb2.removeFromSuperview()
+            if(!Lobby.isBandLeader)
+            {
+                updateTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(listenForBandLeader), userInfo: nil, repeats: true)
+                
+            }
+         }
         SessionDraw(frame: frame).draw()
         
         //print("it ran")

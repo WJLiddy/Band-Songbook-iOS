@@ -80,6 +80,7 @@ class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
                     Session.songXMLs.append(SWXMLHash.parse(song))
                 }
                 
+                updateTimer?.invalidate()
                 performSegue(withIdentifier: "ToSession", sender: nil)
                 //“songs”: [XML #0, XML #1, .... ]
             }
