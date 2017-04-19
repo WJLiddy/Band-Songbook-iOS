@@ -42,9 +42,10 @@ public class SessionMusicDisplay: UIView
         
         if(recv != nil)
         {
-            print("RECVD MESSAGE")
             if (recv!["session"] != nil && recv!["session"] as! String == "begin playback")
             {
+                
+                print("exec!")
                 let date = recv!["time"] as! Int
                 let _ = recv!["tempo"] as! Double
                 let measure = recv!["measure "] as! Int

@@ -29,7 +29,7 @@ class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
             Quit.removeFromSuperview()
         }
         
-        updateTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(checkForUpdatedGroupInfo), userInfo: nil, repeats: true)
+        updateTimer = Timer.scheduledTimer(timeInterval: 0.05, target:self, selector: #selector(checkForUpdatedGroupInfo), userInfo: nil, repeats: true)
         
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
