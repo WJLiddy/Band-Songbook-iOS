@@ -58,7 +58,6 @@ class StartRequest : Request
     }
 }
 
-// dummy method for now. Will hit it later if I got time
 class StartSessionRequest : Request
 {
     private var _songList: [String]
@@ -85,6 +84,40 @@ class StartSessionRequest : Request
         return ""
     }
 }
+
+class StartPlaybackRequest : Request
+{
+    private var _time: Int
+    private var _tempo: Double
+    private var _measure: Int
+    
+    public init(time: Int, tempo: Double, measure: Int)
+    {
+        _time = time
+        _tempo = tempo
+        _measure = measure
+    }
+    
+    public override func toJSONString() -> String
+    {
+        let jsonObject:NSMutableDictionary = NSMutableDictionary()
+        jsonObject.setValue("begin playback", forKey: "request")
+        jsonObject.setValue(_time, forKey: "time")
+        jsonObject.setValue(_tempo, forKey: "tempo")
+        jsonObject.setValue(_measure, forKey: "measure")
+        let jsonData: NSData
+        do {
+            jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions()) as NSData
+            let jsonString = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
+            return jsonString
+        } catch _ {
+            print ("JSON Failure")
+        }
+        // Parsing will never fail
+        return ""
+    }
+}
+
 
 
 

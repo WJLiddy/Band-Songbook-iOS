@@ -329,6 +329,15 @@
                             <constraint firstItem="ncE-pB-Urj" firstAttribute="trailing" secondItem="plX-sA-Dhe" secondAttribute="trailingMargin" id="lZ4-5y-Zch"/>
                             <constraint firstItem="ncE-pB-Urj" firstAttribute="leading" secondItem="plX-sA-Dhe" secondAttribute="leadingMargin" id="uwk-5m-p6k"/>
                         </constraints>
+                        <connections>
+                            <outlet property="ffb" destination="P98-t6-qct" id="ZpW-5P-UnN"/>
+                            <outlet property="ffb2" destination="CGL-sR-VG8" id="p59-Tw-iLc"/>
+                            <outlet property="playb" destination="alY-6W-o8V" id="AI6-aS-FbD"/>
+                            <outlet property="rwb" destination="y33-8L-qvE" id="M11-nW-zfu"/>
+                            <outlet property="rwb2" destination="ZPr-7R-x0D" id="tm4-uU-uZN"/>
+                            <outlet property="rwb3" destination="ETa-Z6-Rbw" id="xQh-hr-xPg"/>
+                            <outlet property="stopb" destination="X7B-vP-R3m" id="GMc-di-R12"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9T8-8D-zw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
