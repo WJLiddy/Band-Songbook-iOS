@@ -21,12 +21,14 @@ class MainMenu : UIViewController
         print("join")
         if(setSocket() && requestOK(join: true))
         {
+            Lobby.isBandLeader = false
             performSegue(withIdentifier: "ToLobby", sender: nil)
         }
     }
     @IBAction func createGroupPressed(_ sender: AnyObject) {
         if(setSocket() && requestOK(join: false))
         {
+            Lobby.isBandLeader = true
             performSegue(withIdentifier: "ToLobby", sender: nil)
         }
     }

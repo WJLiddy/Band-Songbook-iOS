@@ -11,7 +11,20 @@ import UIKit
 
 class Lobby : UIViewController
 {
+    @IBOutlet weak var AddSongs: UIButton!
+    
+    @IBOutlet weak var Quit: UIButton!
+    
+    public static var isBandLeader = false
 
+    override func viewDidLoad() {
+        if(!Lobby.isBandLeader)
+        {
+            AddSongs.removeFromSuperview()
+            Quit.removeFromSuperview()
+        }
+    }
+    
     @IBAction func onPressQuit(_ sender: UIButton)
     {
         //tear down socket and go back to main

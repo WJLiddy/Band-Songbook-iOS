@@ -139,7 +139,7 @@ class SessionDraw
                 let tempPlayhead = playhead + Double(note.rhythm.offset) * measure.secondsPerDivision
                 let width_ratio = (0.25) + (tempPlayhead - song_seconds_elapsed)*width_per_second
                 let size = staveFontSizes[index]
-                let drawAttr = [ NSFontAttributeName: UIFont(name: "Avenir Next Condensed", size: CGFloat(size))! , NSForegroundColorAttributeName: UIColor.blue]
+                let drawAttr = [ NSFontAttributeName: UIFont(name: "Avenir Next Condensed", size: CGFloat(size))! , NSForegroundColorAttributeName:(((tempPlayhead - song_seconds_elapsed) > 0) ? ( UIColor.blue) : ( UIColor.orange))]
                 
                 let textoffset = note.fret > 9 ? (size/2) : (size/4)
                 fret.draw(with: CGRect(x: Double(w) * width_ratio - textoffset, y: y - (size/2), width: Double(h), height: Double(h)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
