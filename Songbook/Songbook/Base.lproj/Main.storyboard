@@ -175,7 +175,7 @@
                                 <rect key="frame" x="0.0" y="28" width="667" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lWO-7R-g2V" id="FRt-XB-hZA">
-                                    <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -350,7 +350,7 @@
                                         <rect key="frame" x="0.0" y="28" width="627" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a11-zr-4lI" id="d6d-eE-eqc">
-                                            <rect key="frame" x="0.0" y="0.0" width="627" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="627" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlK-R3-rpm">
@@ -418,6 +418,7 @@
                     <connections>
                         <outlet property="AddSongs" destination="BZQ-Xi-6m3" id="bGN-e4-SiS"/>
                         <outlet property="Quit" destination="l9d-Hb-rve" id="pSV-fo-yFG"/>
+                        <outlet property="tableView" destination="Piv-jy-phg" id="B3i-QI-Oj7"/>
                         <segue destination="1kM-1F-tYa" kind="showDetail" identifier="ToSession" id="W65-Ar-Hb9"/>
                     </connections>
                 </viewController>

@@ -31,23 +31,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
         for file in resourceFiles
         {
-            if((file as NSString).pathExtension != ".xml")
+            if((file as NSString).pathExtension != "xml")
             {
                 continue
             }
             
-            let destinationPath = documentDirectoryPath.appendingPathComponent(file + ".xml")
-            let sourcePath = Bundle.main.path(forResource: file , ofType: "xml")
+            print("file is"  + file)
+            let destinationPath = documentDirectoryPath.appendingPathComponent(file)
+            let sourcePath = resourcesPath + "/" + file
+
             do
             {
                 if(fileManager.fileExists(atPath: destinationPath))
                 {
                     try fileManager.removeItem(atPath: destinationPath)
                 }
-                try fileManager.copyItem(atPath: sourcePath!, toPath: destinationPath)
+                try fileManager.copyItem(atPath: sourcePath, toPath: destinationPath)
             } catch
             {
                // will error if file already present
+                 print("Error info: \(error)")
             }
         }
         return true

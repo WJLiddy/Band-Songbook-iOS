@@ -18,7 +18,10 @@ class MainMenu : UIViewController
     @IBOutlet weak var NameField: UITextField!
     
     @IBAction func joinGroupPressed(_ sender: AnyObject) {
-        print("join")
+        if(NameField.text == "" || GroupNameField.text == "")
+        {
+            UIErrorMessage.init(viewController: self, errorMessage: "Please enter a user name and a group name").show()
+        }
         if(setSocket() && requestOK(join: true))
         {
             Lobby.isBandLeader = false
@@ -26,9 +29,14 @@ class MainMenu : UIViewController
         }
     }
     @IBAction func createGroupPressed(_ sender: AnyObject) {
+        if(NameField.text == "" || GroupNameField.text == "")
+        {
+            UIErrorMessage.init(viewController: self, errorMessage: "Please enter a user name and a group name").show()
+        }
         if(setSocket() && requestOK(join: false))
         {
             Lobby.isBandLeader = true
+            Lobby.usernames = [NameField.text!]
             performSegue(withIdentifier: "ToLobby", sender: nil)
         }
     }
