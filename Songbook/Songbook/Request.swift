@@ -118,6 +118,26 @@ class StartPlaybackRequest : Request
     }
 }
 
+class StopPlaybackRequest : Request
+{
+
+    public override func toJSONString() -> String
+    {
+        let jsonObject:NSMutableDictionary = NSMutableDictionary()
+        jsonObject.setValue("stop playback", forKey: "request")
+        let jsonData: NSData
+        do {
+            jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions()) as NSData
+            let jsonString = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
+            return jsonString
+        } catch _ {
+            print ("JSON Failure")
+        }
+        // Parsing will never fail
+        return ""
+    }
+}
+
 
 
 

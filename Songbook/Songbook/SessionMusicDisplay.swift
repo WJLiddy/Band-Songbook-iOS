@@ -43,6 +43,12 @@ public class SessionMusicDisplay: UIView
                 print("play pressed")
 
             }
+            
+            if (recv!["session"] != nil && recv!["session"] as! String == "stop playback")
+            {
+                Session.playbackStarted = false;
+                
+            }
         }
     
     }
@@ -110,6 +116,7 @@ public class SessionMusicDisplay: UIView
     }
     @IBAction func onStop(_ sender: Any) {
         Session.playbackStarted = false;
+        SongSocket.socket!.sendRequest(request : StopPlaybackRequest())
         print("stop pressed")
     }
     
