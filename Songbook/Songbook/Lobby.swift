@@ -1,14 +1,7 @@
-//
-//  Lobby.swift
-//  Songbook
-//
-//  Created by William Liddy on 3/21/17.
-//  Copyright © 2017 NeutralSpace. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
+// Here is the lobby. In this UI View, the bandleader awaits people to join, and can also select songs to play.
 class Lobby : UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var AddSongs: UIButton!

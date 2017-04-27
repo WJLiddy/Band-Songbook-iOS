@@ -1,20 +1,31 @@
 import UIKit
 import Foundation
+
+// This class is responsible for drawing a parsed musicXML ( A MusicXmlPart[]) onto the screen.
 class SessionDraw
 {
     // scroll speed: one note will travel 0.3 width of the screen per second.
+    // TODO: This value should be increased if you want the scroll to be slower, at risk of notes being crowded together.
     let width_per_second = 0.3
-    // edgemargin: extra whitespace at each edge
+    
+    // extra whitespace at each edge as a ratio of the app height. Necessary so that tab lines do not cover the UI.
     let edgemargin = 0.1
     
+    // width and height of screen, in pixels.
     let w: CGFloat;
     let h: CGFloat;
+    
+    // Count of staves (or, tabs, if you like) to display
     let stavecount: Int;
+    // The ratio of the space that each tab gets.
     let stave_space_ratio: Double;
+    // The amount of time that has passed since the start of the song.
+    // updated in each draw() call.
     let song_seconds_elapsed : Double;
+    //
     var staveLocations = [[Double]]()
     var staveFontSizes = [Double]()
-    //refers to where we drawing the note or barline.
+    //refers to where we are drawing, in terms of seconds since song started.
     var playhead = 0.0;
     
     public init(frame: CGRect)
@@ -26,14 +37,16 @@ class SessionDraw
         // What percent of the screen does each stave get?
         stave_space_ratio = ((1 - (2*edgemargin)) / Double(stavecount))
         
+        //Get our position in the song.
         let currentTime = Date().timeIntervalSince1970
         
-        //Get our position in the song.
         if(Session.playbackStarted)
         {
             song_seconds_elapsed = currentTime - Session.playbackStartTime
         } else
         {
+            // Here, stopMeasure is the point when the song stopped.
+            // In retrospect I should have just passed the Session instance to this class but ain't got time for that now
             song_seconds_elapsed = Session.songParts![0].measures[Session.stopMeasure].timeFromStart
         }
     }
@@ -72,23 +85,6 @@ class SessionDraw
         {
             // draw the measures and the notes.
             drawMeasures(index: index, partToDraw: Session.songParts![indexToDisplay])
-
-            /**
-            //draw double barline
-            let cPath = UIBezierPath()
-            //playhead centered at 0.25
-            let width_ratio = (0.25) + (playhead - song_seconds_elapsed)*width_per_second
-            cPath.move(to: CGPoint(x:Double(w) * width_ratio, y:0))
-            cPath.addLine(to: CGPoint(x:Double(w) * width_ratio, y:Double(h)))
-            cPath.close()
-            
-            let bPath = UIBezierPath()
-            //playhead centered at 0.25
-            let bwidth_ratio = (0.26) + (playhead - song_seconds_elapsed)*width_per_second
-            bPath.move(to: CGPoint(x:Double(w) * bwidth_ratio, y:0))
-            bPath.addLine(to: CGPoint(x:Double(w) * bwidth_ratio, y:Double(h)))
-            bPath.close()
-            */
             
             //Draw note marker
             let aPath = UIBezierPath()
@@ -138,6 +134,11 @@ class SessionDraw
                 let y = string_y * Double(h)
                 let tempPlayhead = playhead + Double(note.rhythm.offset) * measure.secondsPerDivision
                 let width_ratio = (0.25) + (tempPlayhead - song_seconds_elapsed)*width_per_second
+                // only render notes near the screen
+                if(width_ratio > 2 || width_ratio < -2)
+                {
+                    continue
+                }
                 let size = staveFontSizes[index]
                 let drawAttr = [ NSFontAttributeName: UIFont(name: "Avenir Next Condensed", size: CGFloat(size))! , NSForegroundColorAttributeName:(((tempPlayhead - song_seconds_elapsed) > 0) ? ( UIColor.blue) : ( UIColor.orange))]
                 

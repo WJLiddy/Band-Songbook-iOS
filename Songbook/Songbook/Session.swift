@@ -12,7 +12,7 @@ import UIKit
 class Session : UIViewController
 {
     static var songXMLs : [XMLIndexer] = []
-    static var songParts : [MusicXMLPart]?
+    static var songParts : [MusicXMLPart]? = nil
     static var songPartIndexesToDisplay : [Int] = []
     
     //playback info
@@ -25,18 +25,23 @@ class Session : UIViewController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[0])
-        getPartNumberDesired()
-        let _ = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[0])
+        // has not init'd the song yet
+        if(Session.songParts == nil)
+        {
+            Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[0])
+            Session.getPartNumberDesired(view: self)
+            let _ = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[0])
+        }
     }
     
     //curry magic
-    func assignPart (x: Int) -> (UIAlertAction?) -> Void
+    static func assignPart (x: Int) -> (UIAlertAction?) -> Void
     {
         return {_ in Session.songPartIndexesToDisplay = [x]}
     }
     
-    func getPartNumberDesired()
+    // sloppy, but works, for now.
+    static func getPartNumberDesired(view: UIViewController)
     {        // create the alert
         let f = Session.songXMLs[0]["score-partwise"]
         let songname = Session.songXMLs[0]["score-partwise"]["work"]["work-title"][0].element!.text!
@@ -51,6 +56,6 @@ class Session : UIViewController
         // show the alert
         }
         
-        self.present(alert, animated: true, completion: nil)
+        view.present(alert, animated: true, completion: nil)
     }
 }

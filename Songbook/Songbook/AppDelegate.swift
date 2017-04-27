@@ -14,20 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+    // this runs when app starts. The only thing I need to do is copy the built-in songs to the user's document directory
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let fileManager = FileManager.default
         
+        // collect all the resource files (the built in songs)
         var resourceFiles: [String] = []
-        let resourcesPath = Bundle.main.resourcePath!
-
+        let resourcesPath = Bundle.main.resourcePath;
         do {
-            resourceFiles = try fileManager.contentsOfDirectory(atPath: resourcesPath)
+            resourceFiles = try fileManager.contentsOfDirectory(atPath: resourcesPath!)
         } catch {
             print(error)
         }
         
-        // copy sample song files
+        // copy sample song files to user directory. Only send XMLs.
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
         for file in resourceFiles
         {
@@ -35,10 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             {
                 continue
             }
-            
-            print("file is"  + file)
             let destinationPath = documentDirectoryPath.appendingPathComponent(file)
-            let sourcePath = resourcesPath + "/" + file
+            let sourcePath = resourcesPath! + "/" + file
 
             do
             {
@@ -49,8 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try fileManager.copyItem(atPath: sourcePath, toPath: destinationPath)
             } catch
             {
-               // will error if file already present
-                 print("Error info: \(error)")
+               // should not error but have to catch- I know the path name is right
+                print("Sample song copy error: \(error)")
             }
         }
         return true

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		241EE4F21E9ED8FA00FA8408 /* SessionDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241EE4F11E9ED8FA00FA8408 /* SessionDraw.swift */; };
 		2439BEFD1E84BADD00FFB108 /* SessionMusicDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */; };
+		245B535D1EB2547400E3EF8B /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245B535C1EB2547400E3EF8B /* Options.swift */; };
 		247DC58A1E8215730005B489 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5891E8215730005B489 /* Lobby.swift */; };
 		247DC59B1E821D590005B489 /* FBFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5901E821D590005B489 /* FBFile.swift */; };
 		247DC59C1E821D590005B489 /* FileBrowser.h in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5911E821D590005B489 /* FileBrowser.h */; };
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		241EE4F11E9ED8FA00FA8408 /* SessionDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDraw.swift; sourceTree = "<group>"; };
 		2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionMusicDisplay.swift; sourceTree = "<group>"; };
+		245B535C1EB2547400E3EF8B /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		247DC5891E8215730005B489 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		247DC5901E821D590005B489 /* FBFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FBFile.swift; path = FileBrowser/FBFile.swift; sourceTree = "<group>"; };
 		247DC5911E821D590005B489 /* FileBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileBrowser.h; path = FileBrowser/FileBrowser.h; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				24FDFCDE1E5F60BF006CDE78 /* ViewController.swift */,
 				24FDFCE01E5F60BF006CDE78 /* Main.storyboard */,
 				24FDFCE31E5F60BF006CDE78 /* Assets.xcassets */,
+				245B535C1EB2547400E3EF8B /* Options.swift */,
 				24FDFCE51E5F60BF006CDE78 /* LaunchScreen.storyboard */,
 				247DC5C41E8256340005B489 /* SWXMLHash.swift */,
 				24FDFCE81E5F60BF006CDE78 /* Info.plist */,
@@ -418,6 +421,7 @@
 				247DC59C1E821D590005B489 /* FileBrowser.h in Sources */,
 				247DC59D1E821D590005B489 /* FileBrowser.swift in Sources */,
 				247DC59E1E821D590005B489 /* FileListPreview.swift in Sources */,
+				245B535D1EB2547400E3EF8B /* Options.swift in Sources */,
 				247DC59F1E821D590005B489 /* FileListSearch.swift in Sources */,
 				247DC5A01E821D590005B489 /* FileListTableView.swift in Sources */,
 				2439BEFD1E84BADD00FFB108 /* SessionMusicDisplay.swift in Sources */,
