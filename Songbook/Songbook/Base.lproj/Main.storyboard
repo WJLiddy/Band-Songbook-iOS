@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="bottom" id="NvK-tR-AN6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EI1-aQ-S8X">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Primary Part:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ci-gm-FRZ">
@@ -106,7 +106,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="f5q-do-5vo">
@@ -175,23 +175,35 @@
         <!--Select Next Song-->
         <scene sceneID="bKr-3K-GYh">
             <objects>
-                <tableViewController id="fof-eS-uLS" sceneMemberID="viewController">
+                <tableViewController id="fof-eS-uLS" customClass="SongSelect" customModule="Songbook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7VU-sU-acS">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sMo-A7-r17">
-                            <rect key="frame" x="0.0" y="72" width="667" height="44"/>
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
+                            <state key="normal" title="Go Back"/>
+                            <connections>
+                                <segue destination="1kM-1F-tYa" kind="show" id="Ukh-7q-EdV"/>
+                            </connections>
                         </button>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lWO-7R-g2V">
-                                <rect key="frame" x="0.0" y="28" width="667" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LabelCell" textLabel="Cj1-th-KxW" style="IBUITableViewCellStyleDefault" id="dHy-sz-fTU">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lWO-7R-g2V" id="FRt-XB-hZA">
-                                    <frame key="frameInset" width="667" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHy-sz-fTU" id="F1O-xa-N7X">
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cj1-th-KxW">
+                                            <frame key="frameInset" minX="15" width="345" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -201,11 +213,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select Next Song" id="BMP-AI-Ose">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="xzh-Wn-aoe">
-                            <connections>
-                                <segue destination="1kM-1F-tYa" kind="show" id="rLM-3A-imT"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="xzh-Wn-aoe"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGl-LZ-aWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -221,11 +229,11 @@
                         <viewControllerLayoutGuide type="bottom" id="FuA-Jr-hRH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="plX-sA-Dhe" customClass="SessionMusicDisplay" customModule="Songbook" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ncE-pB-Urj">
-                                <frame key="frameInset" minX="20" minY="168" width="627" height="75"/>
+                                <frame key="frameInset" minX="20" minY="168" width="343" height="133"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y33-8L-qvE" userLabel="Restart">
                                         <state key="normal" image="restart"/>
@@ -356,17 +364,17 @@
                         <viewControllerLayoutGuide type="bottom" id="5YD-Q0-xat"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pPb-bt-84h">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Piv-jy-phg">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="a11-zr-4lI">
-                                        <rect key="frame" x="0.0" y="28" width="627" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a11-zr-4lI" id="d6d-eE-eqc">
-                                            <frame key="frameInset" width="627" height="43"/>
+                                            <frame key="frameInset" width="343" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlK-R3-rpm">
@@ -451,7 +459,7 @@
         <image name="stop" width="140" height="140"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Ukh-7q-EdV"/>
         <segue reference="fbh-J2-JQt"/>
-        <segue reference="7QA-EX-M4j"/>
     </inferredMetricsTieBreakers>
 </document>

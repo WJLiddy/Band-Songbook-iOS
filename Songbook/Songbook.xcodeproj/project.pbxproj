@@ -10,6 +10,7 @@
 		241EE4F21E9ED8FA00FA8408 /* SessionDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241EE4F11E9ED8FA00FA8408 /* SessionDraw.swift */; };
 		2439BEFD1E84BADD00FFB108 /* SessionMusicDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */; };
 		245B535D1EB2547400E3EF8B /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245B535C1EB2547400E3EF8B /* Options.swift */; };
+		247B10871EB2684900D48BAA /* SongSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247B10861EB2684900D48BAA /* SongSelect.swift */; };
 		247DC58A1E8215730005B489 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5891E8215730005B489 /* Lobby.swift */; };
 		247DC59B1E821D590005B489 /* FBFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5901E821D590005B489 /* FBFile.swift */; };
 		247DC59C1E821D590005B489 /* FileBrowser.h in Sources */ = {isa = PBXBuildFile; fileRef = 247DC5911E821D590005B489 /* FileBrowser.h */; };
@@ -47,7 +48,6 @@
 		24FA50421E81D6210099534C /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA50411E81D6210099534C /* MainMenu.swift */; };
 		24FA50441E81EAFC0099534C /* UIErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FA50431E81EAFC0099534C /* UIErrorMessage.swift */; };
 		24FDFCDD1E5F60BF006CDE78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFCDC1E5F60BF006CDE78 /* AppDelegate.swift */; };
-		24FDFCDF1E5F60BF006CDE78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FDFCDE1E5F60BF006CDE78 /* ViewController.swift */; };
 		24FDFCE21E5F60BF006CDE78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24FDFCE01E5F60BF006CDE78 /* Main.storyboard */; };
 		24FDFCE41E5F60BF006CDE78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24FDFCE31E5F60BF006CDE78 /* Assets.xcassets */; };
 		24FDFCE71E5F60BF006CDE78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24FDFCE51E5F60BF006CDE78 /* LaunchScreen.storyboard */; };
@@ -79,6 +79,7 @@
 		241EE4F11E9ED8FA00FA8408 /* SessionDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDraw.swift; sourceTree = "<group>"; };
 		2439BEFC1E84BADD00FFB108 /* SessionMusicDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionMusicDisplay.swift; sourceTree = "<group>"; };
 		245B535C1EB2547400E3EF8B /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		247B10861EB2684900D48BAA /* SongSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSelect.swift; sourceTree = "<group>"; };
 		247DC5891E8215730005B489 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		247DC5901E821D590005B489 /* FBFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FBFile.swift; path = FileBrowser/FBFile.swift; sourceTree = "<group>"; };
 		247DC5911E821D590005B489 /* FileBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileBrowser.h; path = FileBrowser/FileBrowser.h; sourceTree = "<group>"; };
@@ -112,7 +113,6 @@
 		24FA50431E81EAFC0099534C /* UIErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIErrorMessage.swift; sourceTree = "<group>"; };
 		24FDFCD91E5F60BF006CDE78 /* Songbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Songbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24FDFCDC1E5F60BF006CDE78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		24FDFCDE1E5F60BF006CDE78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24FDFCE11E5F60BF006CDE78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24FDFCE31E5F60BF006CDE78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24FDFCE61E5F60BF006CDE78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 				247DC5A61E8221A50005B489 /* Resources */,
 				247DC58E1E821CED0005B489 /* FileBrowser */,
 				24FDFCDC1E5F60BF006CDE78 /* AppDelegate.swift */,
-				24FDFCDE1E5F60BF006CDE78 /* ViewController.swift */,
+				247B10861EB2684900D48BAA /* SongSelect.swift */,
 				24FDFCE01E5F60BF006CDE78 /* Main.storyboard */,
 				24FDFCE31E5F60BF006CDE78 /* Assets.xcassets */,
 				245B535C1EB2547400E3EF8B /* Options.swift */,
@@ -432,13 +432,13 @@
 				247DC5A41E821D590005B489 /* PreviewTransitionViewController.swift in Sources */,
 				247DC5A51E821D590005B489 /* WebviewPreviewViewContoller.swift in Sources */,
 				24FDFD0E1E5F6C75006CDE78 /* ysocket.swift in Sources */,
-				24FDFCDF1E5F60BF006CDE78 /* ViewController.swift in Sources */,
 				24FDFD0F1E5F6C75006CDE78 /* ytcpsocket.c in Sources */,
 				24FA50441E81EAFC0099534C /* UIErrorMessage.swift in Sources */,
 				24FA50421E81D6210099534C /* MainMenu.swift in Sources */,
 				24FDFCDD1E5F60BF006CDE78 /* AppDelegate.swift in Sources */,
 				247DC58A1E8215730005B489 /* Lobby.swift in Sources */,
 				247DC5C31E8254E40005B489 /* Session.swift in Sources */,
+				247B10871EB2684900D48BAA /* SongSelect.swift in Sources */,
 				247DC5C51E8256340005B489 /* SWXMLHash.swift in Sources */,
 				24F816121E6F38C30095ECA5 /* Request.swift in Sources */,
 				24F816161E6F41E80095ECA5 /* SongSocket.swift in Sources */,
