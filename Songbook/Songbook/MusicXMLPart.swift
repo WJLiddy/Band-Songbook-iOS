@@ -142,7 +142,7 @@ class MusicXMLPart
             if(midiChannel == "10")
             {
                 // this is a PERCUSSION part.
-                let measures = MusicXMLDrumPart.parseMeasures(xml: Session.songXMLs[0]["score-partwise"]["part"][index])
+                let measures = MusicXMLDrumPart.parseMeasures(xml: Session.songXMLs[Session.currentSong]["score-partwise"]["part"][index])
                 let part = MusicXMLDrumPart(partName: partName, measures: measures);
                 parts.append(part)
             } else

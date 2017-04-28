@@ -21,7 +21,7 @@ class SessionDraw
     let stave_space_ratio: Double;
     // The amount of time that has passed since the start of the song.
     // updated in each draw() call.
-    let song_seconds_elapsed : Double;
+    var song_seconds_elapsed : Double;
     //
     var staveLocations = [[Double]]()
     var staveFontSizes = [Double]()
@@ -43,6 +43,8 @@ class SessionDraw
         if(Session.playbackStarted)
         {
             song_seconds_elapsed = currentTime - Session.playbackStartTime
+            //scale based on tempo
+            song_seconds_elapsed = song_seconds_elapsed * (((Double)(Session.playbackSpeed)) / 100.0)
         } else
         {
             // Here, stopMeasure is the point when the song stopped.
