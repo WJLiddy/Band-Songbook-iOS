@@ -20,6 +20,11 @@ class OptionMenu : UIViewController
     override func viewDidLoad() {
         PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.normal)
         PrimaryPartButton.setNeedsDisplay()
+        if(Session.songPartIndexesToDisplay.count == 2)
+        {
+            SecondayPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[1]].partName, for: UIControlState.normal)
+            SecondayPartButton.setNeedsDisplay()
+        }
         speedStepper.value = Double(Session.playbackSpeed)
         speedDisplay.text = String("Speed: ") + String(Session.playbackSpeed) + "%"
     }
@@ -34,11 +39,12 @@ class OptionMenu : UIViewController
     
     @IBAction func primaryPartPress(_ sender: AnyObject) {
         Session.getPartNumberDesired(view: self)
+        PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.focused)
         PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.normal)
-        PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.highlighted)
-        PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.selected)
     }
     @IBAction func secondaryPartPress(_ sender: AnyObject) {
-        Session.getPartNumberDesired(view: self)
+        Session.getSecondaryPartNumberDesired(view: self)
+        SecondayPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[1]].partName, for: UIControlState.focused)
+        SecondayPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[1]].partName, for: UIControlState.normal)
     }
 }

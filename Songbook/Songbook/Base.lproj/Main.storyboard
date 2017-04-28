@@ -20,70 +20,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Primary Part:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ci-gm-FRZ">
-                                <frame key="frameInset" minX="20" minY="20" width="347" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Primary Part:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ci-gm-FRZ">
+                                <frame key="frameInset" minX="20" minY="20" width="336" height="21"/>
                                 <accessibility key="accessibilityConfiguration" label="Primary Part:"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Secondary Part:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgv-oX-dU3">
-                                <frame key="frameInset" minX="20" minY="49" width="347" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" label="Primary Part:"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIx-yE-qg2">
-                                <frame key="frameInset" minX="375" minY="11" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIx-yE-qg2">
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="primaryPartPress:" destination="vYJ-vj-3f4" eventType="touchUpInside" id="nzl-uF-QLb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su1-AW-zUt">
-                                <frame key="frameInset" minX="375" minY="40" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su1-AW-zUt">
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="secondaryPartPress:" destination="vYJ-vj-3f4" eventType="touchUpInside" id="SnB-Xj-3vI"/>
                                 </connections>
                             </button>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minimumValue="20" maximumValue="200" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="aYm-Pf-NMc">
-                                <frame key="frameInset" minX="351" minY="74" width="94" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minimumValue="20" maximumValue="200" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="aYm-Pf-NMc">
+                                <frame key="frameInset" minX="553" minY="78" width="94" height="29"/>
                                 <connections>
                                     <action selector="stepperChanged:" destination="vYJ-vj-3f4" eventType="valueChanged" id="fgF-pK-NSI"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speed: 100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhF-Yq-HQp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Speed: 100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhF-Yq-HQp">
                                 <frame key="frameInset" minX="20" minY="78" width="336" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcH-TU-WGp">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcH-TU-WGp">
                                 <frame key="frameInset" minX="561" minY="337" width="106" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="End Session"/>
                                 <connections>
                                     <action selector="onEndSession:" destination="vYJ-vj-3f4" eventType="touchUpInside" id="QTI-Ct-LQB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4p-ar-Eo6">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4p-ar-Eo6">
                                 <frame key="frameInset" minY="337" width="127" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Resume"/>
                                 <connections>
                                     <segue destination="1kM-1F-tYa" kind="show" id="7QA-EX-M4j"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Secondary Part:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgv-oX-dU3">
+                                <frame key="frameInset" minX="20" minY="54" width="347" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="Primary Part:"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yIx-yE-qg2" firstAttribute="top" secondItem="Te5-O1-bo6" secondAttribute="bottom" id="3hm-3g-jFa"/>
+                            <constraint firstItem="TcH-TU-WGp" firstAttribute="trailing" secondItem="EI1-aQ-S8X" secondAttribute="trailing" id="52w-MY-Glj"/>
+                            <constraint firstItem="yIx-yE-qg2" firstAttribute="trailing" secondItem="EI1-aQ-S8X" secondAttribute="trailingMargin" id="BYA-KM-uV4"/>
+                            <constraint firstItem="HhF-Yq-HQp" firstAttribute="leading" secondItem="EI1-aQ-S8X" secondAttribute="leadingMargin" id="CXu-Dt-n9L"/>
+                            <constraint firstItem="TcH-TU-WGp" firstAttribute="bottom" secondItem="NvK-tR-AN6" secondAttribute="top" id="FZQ-OM-XQA"/>
+                            <constraint firstItem="wgv-oX-dU3" firstAttribute="top" secondItem="su1-AW-zUt" secondAttribute="top" id="IIT-Up-gxE"/>
+                            <constraint firstItem="wgv-oX-dU3" firstAttribute="leading" secondItem="EI1-aQ-S8X" secondAttribute="leadingMargin" id="LQ9-I3-Mzn"/>
+                            <constraint firstItem="aYm-Pf-NMc" firstAttribute="top" secondItem="su1-AW-zUt" secondAttribute="bottom" id="NJ2-tU-Wnm"/>
+                            <constraint firstItem="HhF-Yq-HQp" firstAttribute="top" secondItem="aYm-Pf-NMc" secondAttribute="top" id="Zdb-Hg-5CY"/>
+                            <constraint firstItem="9Ci-gm-FRZ" firstAttribute="leading" secondItem="EI1-aQ-S8X" secondAttribute="leadingMargin" id="dUb-Qu-QIy"/>
+                            <constraint firstItem="su1-AW-zUt" firstAttribute="top" secondItem="yIx-yE-qg2" secondAttribute="bottom" id="ffz-ya-Lh8"/>
+                            <constraint firstItem="9Ci-gm-FRZ" firstAttribute="top" secondItem="Te5-O1-bo6" secondAttribute="bottom" id="grk-HK-dI6"/>
+                            <constraint firstItem="su1-AW-zUt" firstAttribute="trailing" secondItem="EI1-aQ-S8X" secondAttribute="trailingMargin" id="sMh-jr-K1a"/>
+                            <constraint firstItem="g4p-ar-Eo6" firstAttribute="bottom" secondItem="NvK-tR-AN6" secondAttribute="top" id="tql-v4-Gyh"/>
+                            <constraint firstItem="g4p-ar-Eo6" firstAttribute="leading" secondItem="EI1-aQ-S8X" secondAttribute="leading" id="yjY-Kk-6T2"/>
+                            <constraint firstItem="aYm-Pf-NMc" firstAttribute="trailing" secondItem="EI1-aQ-S8X" secondAttribute="trailingMargin" id="zUs-A9-2T0"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="PrimaryPartButton" destination="yIx-yE-qg2" id="3Gt-ft-L6d"/>
@@ -459,7 +467,7 @@
         <image name="stop" width="140" height="140"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ukh-7q-EdV"/>
+        <segue reference="7QA-EX-M4j"/>
         <segue reference="fbh-J2-JQt"/>
     </inferredMetricsTieBreakers>
 </document>

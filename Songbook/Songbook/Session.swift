@@ -33,7 +33,6 @@ class Session : UIViewController
         {
             Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[Session.currentSong])
             Session.getPartNumberDesired(view: self)
-            let _ = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[Session.currentSong])
         }
     }
     
@@ -41,6 +40,12 @@ class Session : UIViewController
     static func assignPart (x: Int) -> (UIAlertAction?) -> Void
     {
         return {_ in Session.songPartIndexesToDisplay = [x]}
+    }
+    
+    //curry magic
+    static func assignSecondPart (x: Int) -> (UIAlertAction?) -> Void
+    {
+        return {_ in Session.songPartIndexesToDisplay[1] = x}
     }
     
     // sloppy, but works, for now.
@@ -57,6 +62,30 @@ class Session : UIViewController
         let action = UIAlertAction(title: element["part-name"][0].element!.text!, style: UIAlertActionStyle.default, handler: cl)
         alert.addAction(action)
         // show the alert
+        }
+        
+        view.present(alert, animated: true, completion: nil)
+    }
+    
+    // sloppy, but works, for now.
+    static func getSecondaryPartNumberDesired(view: UIViewController)
+    {
+        if(Session.songPartIndexesToDisplay.count == 1)
+        {
+            Session.songPartIndexesToDisplay.append(0)
+        }
+        
+        // create the alert
+        let parts = Session.songXMLs[Session.currentSong]["score-partwise"]
+        let songname = parts["work"]["work-title"][0].element!.text!
+        let alert = UIAlertController(title: "Select secondary part for: ", message: songname, preferredStyle: UIAlertControllerStyle.alert)
+        
+        for (index,element) in parts["part-list"]["score-part"].all.enumerated()
+        {
+            let cl = assignSecondPart(x: index)
+            let action = UIAlertAction(title: element["part-name"][0].element!.text!, style: UIAlertActionStyle.default, handler: cl)
+            alert.addAction(action)
+            // show the alert
         }
         
         view.present(alert, animated: true, completion: nil)
