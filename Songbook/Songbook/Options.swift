@@ -41,7 +41,20 @@ class OptionMenu : UIViewController
         Session.getPartNumberDesired(view: self)
         PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.focused)
         PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.normal)
+        SecondayPartButton.setTitle("Add Second Part", for: UIControlState.normal)
     }
+    
+    
+    @IBAction func onRemovePress(_ sender: AnyObject) {
+        print("RM2")
+        if(Session.songPartIndexesToDisplay.count == 2)
+        {
+            print("k?")
+            Session.songPartIndexesToDisplay.removeLast()
+            SecondayPartButton.setTitle("Add Second Part", for: UIControlState.normal)
+        }
+    }
+    
     @IBAction func secondaryPartPress(_ sender: AnyObject) {
         Session.getSecondaryPartNumberDesired(view: self)
         SecondayPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[1]].partName, for: UIControlState.focused)

@@ -69,6 +69,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7f8-Tt-B84">
                                 <frame key="frameInset" minX="601" minY="50" width="46" height="30"/>
                                 <state key="normal" title="Remove Second Part"/>
+                                <connections>
+                                    <action selector="onRemovePress:" destination="vYJ-vj-3f4" eventType="touchUpInside" id="9CY-03-46A"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su1-AW-zUt">
                                 <frame key="frameInset" minX="547" minY="49" width="46" height="30"/>
