@@ -138,6 +138,32 @@ class StopPlaybackRequest : Request
     }
 }
 
+class SwitchSongRequest : Request
+{
+    private var _songNo: Int
+    
+    public init(songNo: Int)
+    {
+        _songNo = songNo
+    }
+    
+    public override func toJSONString() -> String
+    {
+        let jsonObject:NSMutableDictionary = NSMutableDictionary()
+        jsonObject.setValue(_songNo, forKey: "switch song")
+        
+        let jsonData: NSData
+        do {
+            jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions()) as NSData
+            let jsonString = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
+            return jsonString
+        } catch _ {
+            print ("JSON Failure")
+        }
+        // Parsing will never fail
+        return ""
+    }
+}
 
 
 

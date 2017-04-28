@@ -132,7 +132,7 @@ class MusicXMLPart
         var parts: [MusicXMLPart] = []
         
         // Iterate over every part.
-        for (index,element) in Session.songXMLs[0]["score-partwise"]["part-list"]["score-part"].all.enumerated()
+        for (index,element) in Session.songXMLs[Session.currentSong]["score-partwise"]["part-list"]["score-part"].all.enumerated()
         {
             let partName = element["part-name"][0].element!.text!
             let midiChannel = element["midi-instrument"]["midi-channel"][0].element!.text!
@@ -149,9 +149,9 @@ class MusicXMLPart
             {
                 // this is a TAB part.
                 // we can get the string count in the first measure.
-                let scoreAttrs = Session.songXMLs[0]["score-partwise"]["part"][index]["measure"][0]["attributes"]
+                let scoreAttrs = Session.songXMLs[Session.currentSong]["score-partwise"]["part"][index]["measure"][0]["attributes"]
                 let stringCount = Int(scoreAttrs["staff-details"]["staff-lines"].element!.text!)
-                let measures = MusicXMLTabPart.parseMeasures(xml: Session.songXMLs[0]["score-partwise"]["part"][index])
+                let measures = MusicXMLTabPart.parseMeasures(xml: Session.songXMLs[Session.currentSong]["score-partwise"]["part"][index])
                 let part = MusicXMLTabPart(partName: partName, strings: stringCount!, measures: measures);
                 parts.append(part)
                 

@@ -20,20 +20,23 @@ class OptionMenu : UIViewController
     override func viewDidLoad() {
         PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.normal)
         PrimaryPartButton.setNeedsDisplay()
+        speedStepper.value = Double(Session.playbackSpeed)
+        speedDisplay.text = String("Speed: ") + String(Session.playbackSpeed) + "%"
     }
     @IBAction func onEndSession(_ sender: AnyObject) {
         performSegue(withIdentifier: "Quit", sender: nil)
     }
     
     @IBAction func stepperChanged(_ sender: AnyObject) {
-        speedDisplay.text = String("Speed: ") + String(Int(speedStepper.value)) + "%"
+        Session.playbackSpeed = Int(speedStepper.value)
+        speedDisplay.text = String("Speed: ") + String(Session.playbackSpeed) + "%"
     }
     
     @IBAction func primaryPartPress(_ sender: AnyObject) {
         Session.getPartNumberDesired(view: self)
-        PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.normal)
-        PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.highlighted)
-        PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[0]].partName, for: UIControlState.selected)
+        PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[Session.currentSong]].partName, for: UIControlState.normal)
+        PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[Session.currentSong]].partName, for: UIControlState.highlighted)
+        PrimaryPartButton.setTitle(Session.songParts?[Session.songPartIndexesToDisplay[Session.currentSong]].partName, for: UIControlState.selected)
     }
     @IBAction func secondaryPartPress(_ sender: AnyObject) {
         Session.getPartNumberDesired(view: self)

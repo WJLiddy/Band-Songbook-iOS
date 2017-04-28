@@ -14,6 +14,7 @@ class Session : UIViewController
     static var songXMLs : [XMLIndexer] = []
     static var songParts : [MusicXMLPart]? = nil
     static var songPartIndexesToDisplay : [Int] = []
+    static var currentSong : Int = 0
     
     //playback info
     
@@ -23,14 +24,16 @@ class Session : UIViewController
     //Otherwise we are stopped at this measure:
     static var stopMeasure = 0;
     
+    static var playbackSpeed = 100;
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // has not init'd the song yet
         if(Session.songParts == nil)
         {
-            Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[0])
+            Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[Session.currentSong])
             Session.getPartNumberDesired(view: self)
-            let _ = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[0])
+            let _ = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[Session.currentSong])
         }
     }
     
@@ -43,11 +46,11 @@ class Session : UIViewController
     // sloppy, but works, for now.
     static func getPartNumberDesired(view: UIViewController)
     {        // create the alert
-        let f = Session.songXMLs[0]["score-partwise"]
-        let songname = Session.songXMLs[0]["score-partwise"]["work"]["work-title"][0].element!.text!
+        let parts = Session.songXMLs[Session.currentSong]["score-partwise"]
+        let songname = parts["work"]["work-title"][0].element!.text!
         let alert = UIAlertController(title: "Select primary part for: ", message: songname, preferredStyle: UIAlertControllerStyle.alert)
 
-        for (index,element) in Session.songXMLs[0]["score-partwise"]["part-list"]["score-part"].all.enumerated()
+        for (index,element) in parts["part-list"]["score-part"].all.enumerated()
         {
             
         let cl = assignPart(x: index)

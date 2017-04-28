@@ -36,6 +36,18 @@ class SongSelect: UITableViewController
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell number: \(indexPath.row)!")
-        //self.performSegue(withIdentifier: "yourIdentifier", sender: self)
+        // trasmit message that we are switching songs.
+        SongSocket.socket!.sendRequest(request : SwitchSongRequest(songNo: indexPath.row))
+        // reset song state
+        Session.songParts = nil
+        //playback info
+        Session.playbackStarted = false;
+        Session.playbackStartTime = Date().timeIntervalSince1970;
+        Session.stopMeasure = 0;
+        Session.playbackSpeed = 100;
+        Session.songPartIndexesToDisplay = [0];
+        // segue back with new song in mind.
+        Session.currentSong = indexPath.row
+        self.performSegue(withIdentifier: "toSession", sender: self)
     }
 }
