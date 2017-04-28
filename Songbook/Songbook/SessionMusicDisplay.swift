@@ -119,7 +119,7 @@ public class SessionMusicDisplay: UIView
         let date = Int(Date().timeIntervalSince1970 + 3);
         Session.playbackStartTime = Double(date) - (Session.songParts?[0].measures[Session.stopMeasure].timeFromStart)!
         // send JSONs over the network and await an "ok"
-        SongSocket.socket!.sendRequest(request : StartPlaybackRequest(time: Int(date), tempo: ((Double)(Session.playbackSpeed) / 100.0), measure: Session.stopMeasure))
+        SongSocket.socket!.sendRequest(request : StartPlaybackRequest(time: Int(date), tempo: 1.0, measure: Session.stopMeasure))
         print("play pressed")
         
     }

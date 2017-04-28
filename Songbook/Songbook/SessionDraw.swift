@@ -39,7 +39,7 @@ class SessionDraw
         
         //Get our position in the song.
         let currentTime = Date().timeIntervalSince1970
-        
+        //constantly created and updated.
         if(Session.playbackStarted)
         {
             song_seconds_elapsed = currentTime - Session.playbackStartTime
@@ -49,8 +49,7 @@ class SessionDraw
         {
             // Here, stopMeasure is the point when the song stopped.
             // In retrospect I should have just passed the Session instance to this class but ain't got time for that now
-            song_seconds_elapsed = Session.songParts![0].measures[Session.stopMeasure].timeFromStart
-        }
+            song_seconds_elapsed = Session.songParts![0].measures[Session.stopMeasure].timeFromStart * (((Double)(Session.playbackSpeed)) / 100.0)        }
     }
     
     public func findStaveLocations() -> [[Double]]
@@ -124,10 +123,10 @@ class SessionDraw
             aPath.addLine(to: CGPoint(x:Double(w) * width_ratio, y:Double(h)))
             aPath.close()
             
+            
             let size = staveFontSizes[0]
             let drawAttr = [ NSFontAttributeName: UIFont(name: "Avenir Next Condensed", size: CGFloat(size))! , NSForegroundColorAttributeName: UIColor.black]
-            
-            String(measurenumber).draw(with: CGRect(x: Double(w) * width_ratio, y: staveLocations[0][0], width: Double(size), height: Double(size)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
+            String(measurenumber+1).draw(with: CGRect(x: Double(w) * width_ratio, y: staveLocations[0][0], width: Double(size), height: Double(size)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
             
             
             UIColor.gray.set()

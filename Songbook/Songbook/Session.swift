@@ -33,6 +33,7 @@ class Session : UIViewController
         {
             Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[Session.currentSong])
             Session.getPartNumberDesired(view: self)
+            let _ = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[Session.currentSong])
         }
     }
     
@@ -74,6 +75,7 @@ class Session : UIViewController
         {
             Session.songPartIndexesToDisplay.append(0)
         }
+    
         
         // create the alert
         let parts = Session.songXMLs[Session.currentSong]["score-partwise"]
