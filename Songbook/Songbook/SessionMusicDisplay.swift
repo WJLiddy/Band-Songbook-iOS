@@ -34,7 +34,7 @@ public class SessionMusicDisplay: UIView
             if (recv!["session"] != nil && recv!["session"] as! String == "begin playback")
             {
                 let date = recv!["time"] as! Int
-                Session.playbackSpeed = (100 * (recv!["tempo"] as! Double)) as! Int
+                Session.playbackSpeed = (Int)((100 * (recv!["tempo"] as! Double)))
                 let measure = recv!["measure"] as! Int
                 Session.playbackStarted = true;
                 Session.playbackStartTime = Double(date) - (Session.songParts?[0].measures[measure].timeFromStart)!
