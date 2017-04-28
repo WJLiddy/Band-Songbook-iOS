@@ -2,12 +2,25 @@
 import Foundation
 import UIKit
 // Launch menu for the app.
-class MainMenu : UIViewController
+class MainMenu : UIViewController, UITextFieldDelegate
 {
 
     // References to the text fiels.
     @IBOutlet weak var GroupNameField: UITextField!
     @IBOutlet weak var NameField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.GroupNameField.delegate = self;
+        self.NameField.delegate = self;
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     @IBAction func joinGroupPressed(_ sender: AnyObject) {
         if(NameField.text == "" || GroupNameField.text == "")
