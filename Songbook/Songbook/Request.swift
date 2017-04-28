@@ -150,7 +150,8 @@ class SwitchSongRequest : Request
     public override func toJSONString() -> String
     {
         let jsonObject:NSMutableDictionary = NSMutableDictionary()
-        jsonObject.setValue(_songNo, forKey: "switch song")
+        jsonObject.setValue("switch song", forKey: "request")
+        jsonObject.setValue(_songNo, forKey: "song id")
         
         let jsonData: NSData
         do {
