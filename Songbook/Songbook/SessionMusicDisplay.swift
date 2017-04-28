@@ -57,7 +57,7 @@ public class SessionMusicDisplay: UIView
                 Session.songPartIndexesToDisplay = [0];
                 Session.currentSong = recv!["song id"] as! Int
                 Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[Session.currentSong])
-                Session.getPartNumberDesired(view: viewController(self))
+                Session.updateClientPart = true;
             }
    
         }
