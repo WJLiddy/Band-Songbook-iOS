@@ -33,10 +33,8 @@ public class SessionMusicDisplay: UIView
         {
             if (recv!["session"] != nil && recv!["session"] as! String == "begin playback")
             {
-                
-                print("exec'd 1!")
                 let date = recv!["time"] as! Int
-                let _ = recv!["tempo"] as! Double
+                Session.playbackSpeed = (100 * (recv!["tempo"] as! Double)) as! Int
                 let measure = recv!["measure"] as! Int
                 Session.playbackStarted = true;
                 Session.playbackStartTime = Double(date) - (Session.songParts?[0].measures[measure].timeFromStart)!
@@ -49,9 +47,34 @@ public class SessionMusicDisplay: UIView
                 Session.playbackStarted = false;
                 
             }
+        
+            if (recv!["session"] != nil && recv!["session"] as! String == "switch")
+            {
+
+                Session.playbackStarted = false;
+                Session.playbackStartTime = Date().timeIntervalSince1970;
+                Session.stopMeasure = 0;
+                Session.songPartIndexesToDisplay = [0];
+                Session.currentSong = recv!["song id"] as! Int
+                Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[Session.currentSong])
+                Session.getPartNumberDesired(view: viewController(self))
+            }
+   
         }
     
     }
+    
+    func viewController(_ view: UIView) -> UIViewController {
+        var responder: UIResponder? = view
+        while !(responder is UIViewController) {
+            responder = responder?.next
+            if nil == responder {
+                break
+            }
+        }
+        return (responder as? UIViewController)!
+    }
+    
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

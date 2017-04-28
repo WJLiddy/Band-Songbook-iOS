@@ -36,6 +36,7 @@ class SongSelect: UITableViewController
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell number: \(indexPath.row)!")
+        // todo fn'ize
         // trasmit message that we are switching songs.
         SongSocket.socket!.sendRequest(request : SwitchSongRequest(songNo: indexPath.row))
         // reset song state
