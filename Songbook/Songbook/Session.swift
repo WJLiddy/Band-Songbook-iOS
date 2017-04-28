@@ -15,6 +15,7 @@ class Session : UIViewController
     static var songParts : [MusicXMLPart]? = nil
     static var songPartIndexesToDisplay : [Int] = []
     static var currentSong : Int = 0
+    static var currentSession : Session? = nil
     
     //playback info
     
@@ -28,6 +29,7 @@ class Session : UIViewController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Session.currentSession = self
         // has not init'd the song yet
         if(Session.songParts == nil)
         {

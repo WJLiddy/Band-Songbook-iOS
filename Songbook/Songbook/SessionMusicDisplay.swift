@@ -57,8 +57,14 @@ public class SessionMusicDisplay: UIView
                 Session.songPartIndexesToDisplay = [0];
                 Session.currentSong = recv!["song id"] as! Int
                 Session.songParts = MusicXMLPart.parseMusicXML(xml: Session.songXMLs[Session.currentSong])
-                Session.updateClientPart = true;
+                //ßSession.updateClientPart = true;
             }
+            
+            if (recv!["session"] != nil && recv!["session"] as! String == "end")
+            {
+                Session.currentSession?.performSegue(withIdentifier: "quit", sender: nil)
+            }
+            
    
         }
     

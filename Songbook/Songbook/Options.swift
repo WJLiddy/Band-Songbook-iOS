@@ -29,6 +29,8 @@ class OptionMenu : UIViewController
         speedDisplay.text = String("Speed: ") + String(Session.playbackSpeed) + "%"
     }
     @IBAction func onEndSession(_ sender: AnyObject) {
+        SongSocket.socket?.close()
+        Session.songParts = nil
         performSegue(withIdentifier: "Quit", sender: nil)
     }
     

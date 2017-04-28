@@ -367,6 +367,9 @@
                             <outlet property="stopb" destination="X7B-vP-R3m" id="GMc-di-R12"/>
                         </connections>
                     </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="quit" id="PoS-IB-Z6b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9T8-8D-zw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -476,7 +479,7 @@
         <image name="stop" width="140" height="140"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="PoS-IB-Z6b"/>
         <segue reference="7QA-EX-M4j"/>
-        <segue reference="fbh-J2-JQt"/>
     </inferredMetricsTieBreakers>
 </document>
