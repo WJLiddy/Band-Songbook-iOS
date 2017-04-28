@@ -124,6 +124,12 @@ class SessionDraw
             aPath.addLine(to: CGPoint(x:Double(w) * width_ratio, y:Double(h)))
             aPath.close()
             
+            let size = staveFontSizes[0]
+            let drawAttr = [ NSFontAttributeName: UIFont(name: "Avenir Next Condensed", size: CGFloat(size))! , NSForegroundColorAttributeName: UIColor.black]
+            
+            String(measurenumber).draw(with: CGRect(x: Double(w) * width_ratio, y: staveLocations[0][0], width: Double(size), height: Double(size)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
+            
+            
             UIColor.gray.set()
             aPath.stroke()
             
@@ -146,6 +152,7 @@ class SessionDraw
                 
                 let textoffset = note.fret > 9 ? (size/2) : (size/4)
                 fret.draw(with: CGRect(x: Double(w) * width_ratio - textoffset, y: y - (size/2), width: Double(h), height: Double(h)), options: .usesLineFragmentOrigin, attributes: drawAttr, context: nil)
+                
             }
             
             playhead = playhead + Double(measure.duration) * measure.secondsPerDivision
