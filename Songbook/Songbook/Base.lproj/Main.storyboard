@@ -33,12 +33,6 @@
                                     <action selector="primaryPartPress:" destination="vYJ-vj-3f4" eventType="touchUpInside" id="nzl-uF-QLb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su1-AW-zUt">
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="secondaryPartPress:" destination="vYJ-vj-3f4" eventType="touchUpInside" id="SnB-Xj-3vI"/>
-                                </connections>
-                            </button>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minimumValue="20" maximumValue="200" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="aYm-Pf-NMc">
                                 <frame key="frameInset" minX="553" minY="78" width="94" height="29"/>
                                 <connections>
@@ -65,13 +59,24 @@
                                     <segue destination="1kM-1F-tYa" kind="show" id="7QA-EX-M4j"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Secondary Part:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgv-oX-dU3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Secondary Part:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgv-oX-dU3">
                                 <frame key="frameInset" minX="20" minY="54" width="347" height="21"/>
                                 <accessibility key="accessibilityConfiguration" label="Primary Part:"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7f8-Tt-B84">
+                                <frame key="frameInset" minX="601" minY="50" width="46" height="30"/>
+                                <state key="normal" title="Remove Second Part"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su1-AW-zUt">
+                                <frame key="frameInset" minX="547" minY="49" width="46" height="30"/>
+                                <state key="normal" title="Add Second Part"/>
+                                <connections>
+                                    <action selector="secondaryPartPress:" destination="vYJ-vj-3f4" eventType="touchUpInside" id="SnB-Xj-3vI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -79,15 +84,16 @@
                             <constraint firstItem="TcH-TU-WGp" firstAttribute="trailing" secondItem="EI1-aQ-S8X" secondAttribute="trailing" id="52w-MY-Glj"/>
                             <constraint firstItem="yIx-yE-qg2" firstAttribute="trailing" secondItem="EI1-aQ-S8X" secondAttribute="trailingMargin" id="BYA-KM-uV4"/>
                             <constraint firstItem="HhF-Yq-HQp" firstAttribute="leading" secondItem="EI1-aQ-S8X" secondAttribute="leadingMargin" id="CXu-Dt-n9L"/>
+                            <constraint firstItem="su1-AW-zUt" firstAttribute="trailing" secondItem="7f8-Tt-B84" secondAttribute="leading" constant="-8" id="Eh6-V0-pdQ"/>
                             <constraint firstItem="TcH-TU-WGp" firstAttribute="bottom" secondItem="NvK-tR-AN6" secondAttribute="top" id="FZQ-OM-XQA"/>
                             <constraint firstItem="wgv-oX-dU3" firstAttribute="top" secondItem="su1-AW-zUt" secondAttribute="top" id="IIT-Up-gxE"/>
-                            <constraint firstItem="wgv-oX-dU3" firstAttribute="leading" secondItem="EI1-aQ-S8X" secondAttribute="leadingMargin" id="LQ9-I3-Mzn"/>
                             <constraint firstItem="aYm-Pf-NMc" firstAttribute="top" secondItem="su1-AW-zUt" secondAttribute="bottom" id="NJ2-tU-Wnm"/>
+                            <constraint firstItem="7f8-Tt-B84" firstAttribute="trailing" secondItem="EI1-aQ-S8X" secondAttribute="trailingMargin" id="Y9R-Hg-yJR"/>
                             <constraint firstItem="HhF-Yq-HQp" firstAttribute="top" secondItem="aYm-Pf-NMc" secondAttribute="top" id="Zdb-Hg-5CY"/>
                             <constraint firstItem="9Ci-gm-FRZ" firstAttribute="leading" secondItem="EI1-aQ-S8X" secondAttribute="leadingMargin" id="dUb-Qu-QIy"/>
                             <constraint firstItem="su1-AW-zUt" firstAttribute="top" secondItem="yIx-yE-qg2" secondAttribute="bottom" id="ffz-ya-Lh8"/>
                             <constraint firstItem="9Ci-gm-FRZ" firstAttribute="top" secondItem="Te5-O1-bo6" secondAttribute="bottom" id="grk-HK-dI6"/>
-                            <constraint firstItem="su1-AW-zUt" firstAttribute="trailing" secondItem="EI1-aQ-S8X" secondAttribute="trailingMargin" id="sMh-jr-K1a"/>
+                            <constraint firstItem="7f8-Tt-B84" firstAttribute="top" secondItem="yIx-yE-qg2" secondAttribute="bottom" id="o5x-Vv-77q"/>
                             <constraint firstItem="g4p-ar-Eo6" firstAttribute="bottom" secondItem="NvK-tR-AN6" secondAttribute="top" id="tql-v4-Gyh"/>
                             <constraint firstItem="g4p-ar-Eo6" firstAttribute="leading" secondItem="EI1-aQ-S8X" secondAttribute="leading" id="yjY-Kk-6T2"/>
                             <constraint firstItem="aYm-Pf-NMc" firstAttribute="trailing" secondItem="EI1-aQ-S8X" secondAttribute="trailingMargin" id="zUs-A9-2T0"/>

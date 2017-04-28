@@ -49,7 +49,8 @@ class SessionDraw
         {
             // Here, stopMeasure is the point when the song stopped.
             // In retrospect I should have just passed the Session instance to this class but ain't got time for that now
-            song_seconds_elapsed = Session.songParts![0].measures[Session.stopMeasure].timeFromStart * (((Double)(Session.playbackSpeed)) / 100.0)        }
+            song_seconds_elapsed = Session.songParts![0].measures[Session.stopMeasure].timeFromStart
+        }
     }
     
     public func findStaveLocations() -> [[Double]]

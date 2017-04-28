@@ -117,9 +117,9 @@ public class SessionMusicDisplay: UIView
     @IBAction func onPlay(_ sender: Any) {
         Session.playbackStarted = true;
         let date = Int(Date().timeIntervalSince1970 + 3);
-        Session.playbackStartTime = Double(date) - (Session.songParts?[0].measures[Session.stopMeasure].timeFromStart)!
-        // send JSONs over the network and await an "ok"
-        SongSocket.socket!.sendRequest(request : StartPlaybackRequest(time: Int(date), tempo: 1.0, measure: Session.stopMeasure))
+        Session.playbackStartTime = (Double(date) - (100 / (Double)(Session.playbackSpeed)) *
+(Session.songParts?[0].measures[Session.stopMeasure].timeFromStart)!)         // send JSONs over the network and await an "ok"
+        SongSocket.socket!.sendRequest(request : StartPlaybackRequest(time: Int(date), tempo: ((Double)(Session.playbackSpeed) / 100.0), measure: Session.stopMeasure))
         print("play pressed")
         
     }
